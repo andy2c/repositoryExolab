@@ -5,9 +5,20 @@
  
 <mapper namespace="it.condominio.mapper.UtenteMapper">
 
+<insert keyColumn="id" keyProperty="id" useGeneratedKeys="true" parameterType="it.condominio.model.Utente" id="insert">
+insert into utente(nome , cognome , email , password  ) values 
+(#{nome}, #{cognome}, #{email}, #{password}) </insert>
 
+<update parameterType="it.condominio.model.Utente" id="update">
+update utente set nome = #{nome}, cognome = #{cognome}, email = #{email}, password = #{password}  where id = #{id} 
+</update>
 
+<delete parameterType="int" id="delete">delete from utente where id = #{id}; </delete>
 
+<select parameterType="int" id="find" resultType="it.condominio.model.Utente">
+select * from utente where id = #{id}; </select>
+
+<select id="findAll" resultType="it.condominio.model.Utente">select * from utente </select>
 
 
 

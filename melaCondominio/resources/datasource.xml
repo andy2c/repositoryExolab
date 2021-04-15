@@ -37,7 +37,7 @@
 <!--       <mapper resource = "stato.xml" /> -->
 <!--       <mapper resource = "storico_utente.xml" /> -->
 <!--       <mapper resource = "tipo_problematica.xml" /> -->
-<!--       <mapper resource = "utente.xml" /> -->
+      <mapper resource = "utente.xml" />
 <!--       <mapper resource = "voto.xml" /> -->
 
    </mappers>
