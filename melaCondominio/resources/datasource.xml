@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+   
+		
+	<environments default = "development">
+	   <environment id = "development">
+	      <transactionManager type = "JDBC"/>         
+	      <dataSource type = "POOLED">
+	         <property name = "driver" value = "com.mysql.jdbc.Driver"/>
+	         <property name = "url" value = "jdbc:mysql://localhost:3306/exolabmela_progettocondominio?allowPublicKeyRetrieval=true&amp;useSSL=false"/>
+	         <!-- my batis nella istruzione di sopra non supporta &  , bisogna mettere &amp;   -->
+	         <property name = "username" value = "root"/>
+	         <property name = "password" value = "root"/>
+	      </dataSource>            
+	   </environment>
+	</environments>
+
+	
+   <mappers>
+      
+<!--       <mapper resource = "appartamento.xml" /> -->
+<!--       <mapper resource = "delega.xml" />  -->
+<!--       <mapper resource = "filtro_delega.xml" /> -->
+<!--       <mapper resource = "filtro_riunione.xml" /> -->
+<!--       <mapper resource = "palazzina.xml" /> -->
+<!--       <mapper resource = "presenza_riunione.xml" /> -->
+<!--       <mapper resource = "preventivo.xml" /> -->
+<!--       <mapper resource = "problematica.xml" /> -->
+<!--       <mapper resource = "riunione.xml" /> -->
+<!--       <mapper resource = "ruoli_delega.xml" /> -->
+<!--       <mapper resource = "ruolo.xml" /> -->
+<!--       <mapper resource = "soluzione.xml" /> -->
+<!--       <mapper resource = "stato.xml" /> -->
+<!--       <mapper resource = "storico_utente.xml" /> -->
+<!--       <mapper resource = "tipo_problematica.xml" /> -->
+<!--       <mapper resource = "utente.xml" /> -->
+<!--       <mapper resource = "voto.xml" /> -->
+
+   </mappers>
+   
+</configuration>
