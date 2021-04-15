@@ -69,6 +69,21 @@ public class Utente {
 		return "Utente [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", email=" + email + ", password="
 				+ password + ", cambia_password=" + cambia_password + "]";
 	}
+	public Utente(String nome, String cognome, String email, String password) {
+		super();
+		this.nome = nome;
+		this.cognome = cognome;
+		this.email = email;
+		this.password = password;
+	}
+	public Utente(int id, String nome, String cognome, String email, String password) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.email = email;
+		this.password = password;
+	}
 	
 	
 	
