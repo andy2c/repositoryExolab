@@ -5,13 +5,13 @@ import java.util.List;
 import it.condominio.model.Riunione;
 
 public interface RiunioneMapper {
-	public void insert(Riunione riunione);
+	public void insert(Riunione riunione);  // fatto
 
-	public void update(Riunione riunione);
+	public void update(Riunione riunione);  // fatto
 
-	public void delete(int id);
+	public void delete(int id);             // fatto
 
-	public Riunione find(int id);
+	public Riunione find(int id);           // fatto
 
-	public List<Riunione> findAll();
+	public List<Riunione> findAll();        // fatto
 }

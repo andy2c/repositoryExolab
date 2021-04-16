@@ -5,30 +5,26 @@
  
 <mapper namespace="it.condominio.mapper.RiunioneMapper">
 
+<insert keyColumn="id" keyProperty="id" useGeneratedKeys="true"
+		parameterType="it.condominio.model.Riunione" id="insert">
+		insert into riunione (data_riunione , nome_verbale , verbale_contenuto, verbale_percorso ) values
+		(#{data_riunione}, #{nome_verbale}, #{verbale_contenuto}, #{verbale_percorso})
+	</insert>
 
+	<update parameterType="it.condominio.model.Riunione" id="update">
+		update riunione set data_riunione = #{data_riunione}, nome_verbale = #{nome_verbale}, verbale_contenuto = #{verbale_contenuto},
+		verbale_percorso = #{verbale_percorso} where id = #{id}
+	</update>
 
+	<delete parameterType="int" id="delete">delete from riunione where id =
+		#{id}; </delete>
 
+	<select parameterType="int" id="find"
+		resultType="it.condominio.model.Riunione">
+		select * from riunione where id = #{id};
+	</select>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	<select id="findAll" resultType="it.condominio.model.Riunione">select * from riunione </select>
 
 
 </mapper>

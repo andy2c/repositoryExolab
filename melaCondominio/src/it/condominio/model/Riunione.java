@@ -1,10 +1,11 @@
 package it.condominio.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Riunione {
 	private int id;
-	private Date data_riunione;
+	private LocalDate data_riunione;
 	private String nome_verbale;
 	private String verbale_contenuto;
 	private String verbale_percorso;
@@ -14,10 +15,10 @@ public class Riunione {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Date getData_riunione() {
+	public LocalDate getData_riunione() {
 		return data_riunione;
 	}
-	public void setData_riunione(Date data_riunione) {
+	public void setData_riunione(LocalDate data_riunione) {
 		this.data_riunione = data_riunione;
 	}
 	public String getNome_verbale() {
@@ -38,7 +39,7 @@ public class Riunione {
 	public void setVerbale_percorso(String verbale_percorso) {
 		this.verbale_percorso = verbale_percorso;
 	}
-	public Riunione(int id, Date data_riunione, String nome_verbale, String verbale_contenuto,
+	public Riunione(int id, LocalDate data_riunione, String nome_verbale, String verbale_contenuto,
 			String verbale_percorso) {
 		super();
 		this.id = id;
@@ -47,7 +48,7 @@ public class Riunione {
 		this.verbale_contenuto = verbale_contenuto;
 		this.verbale_percorso = verbale_percorso;
 	}
-	public Riunione(Date data_riunione, String nome_verbale, String verbale_contenuto, String verbale_percorso) {
+	public Riunione(LocalDate data_riunione, String nome_verbale, String verbale_contenuto, String verbale_percorso) {
 		super();
 		this.data_riunione = data_riunione;
 		this.nome_verbale = nome_verbale;
