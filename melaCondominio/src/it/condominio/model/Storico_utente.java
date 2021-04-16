@@ -58,24 +58,32 @@ public class Storico_utente {
 		this.id_stato = id_stato;
 	}
 	public Utente getUtente() {
+		if(utente==null)
+			utente=new Utente();
 		return utente;
 	}
 	public void setUtente(Utente utente) {
 		this.utente = utente;
 	}
 	public Ruolo getRuolo() {
+		if(ruolo==null)
+			ruolo= new Ruolo();
 		return ruolo;
 	}
 	public void setRuolo(Ruolo ruolo) {
 		this.ruolo = ruolo;
 	}
 	public Appartamento getAppartamento() {
+		if(appartamento==null)
+			appartamento= new Appartamento();
 		return appartamento;
 	}
 	public void setAppartamento(Appartamento appartamento) {
 		this.appartamento = appartamento;
 	}
 	public Stato getStato() {
+		if(stato==null)
+			stato= new Stato();
 		return stato;
 	}
 	public void setStato(Stato stato) {

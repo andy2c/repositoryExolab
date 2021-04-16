@@ -27,12 +27,16 @@ public class Filtro_riunione {
 		this.id_problematica = id_problematica;
 	}
 	public Riunione getRiunione() {
+		if(riunione==null)
+			riunione=new Riunione();
 		return riunione;
 	}
 	public void setRiunione(Riunione riunione) {
 		this.riunione = riunione;
 	}
 	public Problematica getProblematica() {
+		if(problematica==null)
+			problematica=new Problematica();
 		return problematica;
 	}
 	public void setProblematica(Problematica problematica) {

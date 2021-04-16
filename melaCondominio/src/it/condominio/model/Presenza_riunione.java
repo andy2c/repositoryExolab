@@ -34,12 +34,16 @@ public class Presenza_riunione {
 		this.id_riunione = id_riunione;
 	}
 	public Storico_utente getStorico_utente() {
+		if(storico_utente==null)
+			storico_utente= new Storico_utente();
 		return storico_utente;
 	}
 	public void setStorico_utente(Storico_utente storico_utente) {
 		this.storico_utente = storico_utente;
 	}
 	public Riunione getRiunione() {
+		if(riunione==null)
+			riunione=new Riunione();
 		return riunione;
 	}
 	public void setRiunione(Riunione riunione) {

@@ -24,6 +24,8 @@ public class Appartamento {
 		this.id_palazzina = id_palazzina;
 	}
 	public Palazzina getPalazzina() {
+		if(palazzina==null)
+			palazzina = new Palazzina();
 		return palazzina;
 	}
 	public void setPalazzina(Palazzina palazzina) {

@@ -29,6 +29,7 @@ public class Soluzione {
 		this.descrizione = descrizione;
 	}
 	public int getId_stato() {
+		
 		return id_stato;
 	}
 	public void setId_stato(int id_stato) {
@@ -47,12 +48,16 @@ public class Soluzione {
 		this.id_preventivo = id_preventivo;
 	}
 	public Stato getStato() {
+		if(stato==null)
+			stato= new Stato();
 		return stato;
 	}
 	public void setStato(Stato stato) {
 		this.stato = stato;
 	}
 	public Problematica getProblematica() {
+		if(problematica==null)
+			problematica= new Problematica();
 		return problematica;
 	}
 	public void setProblematica(Problematica problematica) {

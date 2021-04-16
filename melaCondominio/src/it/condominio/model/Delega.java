@@ -33,6 +33,8 @@ public class Delega {
 		this.data_creazione = data_creazione;
 	}
 	public Riunione getRiunione() {
+		if(riunione==null)
+			riunione = new Riunione();
 		return riunione;
 	}
 	public void setRiunione(Riunione riunione) {

@@ -33,12 +33,16 @@ public class Voto {
 		this.id_soluzione = id_soluzione;
 	}
 	public Presenza_riunione getPresenza_riunione() {
+		if(presenza_riunione==null)
+			presenza_riunione= new Presenza_riunione();
 		return presenza_riunione;
 	}
 	public void setPresenza_riunione(Presenza_riunione presenza_riunione) {
 		this.presenza_riunione = presenza_riunione;
 	}
 	public Soluzione getSoluzione() {
+		if(soluzione==null)
+			soluzione= new Soluzione();
 		return soluzione;
 	}
 	public void setSoluzione(Soluzione soluzione) {

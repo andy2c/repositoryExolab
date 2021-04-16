@@ -47,12 +47,16 @@ public class Problematica {
 		this.id_stato_problematica = id_stato_problematica;
 	}
 	public Tipo_problematica getTipo_problematica() {
+		if(tipo_problematica==null)
+			tipo_problematica= new Tipo_problematica();
 		return tipo_problematica;
 	}
 	public void setTipo_problematica(Tipo_problematica tipo_problematica) {
 		this.tipo_problematica = tipo_problematica;
 	}
 	public Stato getStato() {
+		if(stato==null)
+			stato=new Stato();
 		return stato;
 	}
 	public void setStato(Stato stato) {

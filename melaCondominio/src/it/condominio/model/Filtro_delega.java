@@ -35,18 +35,24 @@ public class Filtro_delega {
 		this.id_ruoli_delega = id_ruoli_delega;
 	}
 	public Storico_utente getStorico_utente() {
+		if(storico_utente==null)
+			storico_utente=new Storico_utente();
 		return storico_utente;
 	}
 	public void setStorico_utente(Storico_utente storico_utente) {
 		this.storico_utente = storico_utente;
 	}
 	public Delega getDelega() {
+		if(delega==null)
+			delega = new Delega();
 		return delega;
 	}
 	public void setDelega(Delega delega) {
 		this.delega = delega;
 	}
 	public Ruoli_delega getRuoli_delega() {
+		if(ruoli_delega==null)
+			ruoli_delega=new Ruoli_delega();
 		return ruoli_delega;
 	}
 	public void setRuoli_delega(Ruoli_delega ruoli_delega) {
