@@ -5,13 +5,13 @@ import java.util.List;
 import it.condominio.model.Palazzina;
 
 public interface PalazzinaMapper {
-	public void insert(Palazzina palazzina);
+	public void insert(Palazzina palazzina);  //fatto
 
-	public void update(Palazzina palazzina);
+	public void update(Palazzina palazzina);   // fatta
 
-	public void delete(int id);
+	public void delete(int id);     // fatta
 
-	public Palazzina find(int id);
+	public Palazzina find(int id);   // fatta 
 
-	public List<Palazzina> findAll();
+	public List<Palazzina> findAll();  // fatta
 }

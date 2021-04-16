@@ -6,6 +6,27 @@
 <mapper namespace="it.condominio.mapper.PalazzinaMapper">
 
 
+<insert keyColumn="id" keyProperty="id" useGeneratedKeys="true"
+		parameterType="it.condominio.model.Palazzina" id="insert">
+		insert into palazzina (nome , via , citta , regione ) values
+		(#{nome}, #{via}, #{citta}, #{regione})
+	</insert>
+
+	<update parameterType="it.condominio.model.Palazzina" id="update">
+		update palazzina set nome = #{nome}, via = #{via}, citta = #{citta},
+		regione = #{regione} where id = #{id}
+	</update>
+
+	<delete parameterType="int" id="delete">delete from palazzina where id =
+		#{id}; </delete>
+
+	<select parameterType="int" id="find"
+		resultType="it.condominio.model.Palazzina">
+		select * from palazzina where id = #{id};
+	</select>
+
+	<select id="findAll" resultType="it.condominio.model.Palazzina">select * from palazzina </select>
+
 
 
 
