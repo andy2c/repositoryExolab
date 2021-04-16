@@ -10,7 +10,9 @@ public class UtenteTest {
 	public static void main(String[] args) {
 		UtenteCRUD crud = new UtenteCRUD();
 		
-		Utente model = new Utente("Paolo", "Rossi", "paoletto@hotmail.com", "paoloR98123");
+		Utente model = new Utente();
+		model.setId(4);
+		model.setPassword("passCambiata");
 	//	Utente utente = crud.find(3);
 //		utente = crud.find(4);
 	//	crud.insert(model);
@@ -20,11 +22,19 @@ public class UtenteTest {
 		
 	//	System.out.println(utente.toString());
 		
-		List<Utente>  lista = crud.findAll();
+//		List<Utente>  lista = crud.findAll();
+//		
+//		
+//		for(Utente u : lista)
+//			System.out.println(u.toString());
+		
+//		Utente test = crud.findByEmailAndPassword(model);
+//		
+//		System.out.println(test.toString());
+		
+		crud.updatePassword(model);
 		
 		
-		for(Utente u : lista)
-			System.out.println(u.toString());
 		
 		
 		

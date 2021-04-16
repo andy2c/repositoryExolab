@@ -2,9 +2,11 @@ package it.condominio.crud;
 
 import java.util.List;
 
+import it.condominio.exception.EntityNotFoundError;
 import it.condominio.mapper.UtenteMapper;
 import it.condominio.model.Utente;
 import it.condominio.util.SqlMapFactory;
+
 
 public class UtenteCRUD {
 	public void insert(Utente model) {
@@ -64,5 +66,37 @@ public class UtenteCRUD {
 		return ret;
 
 	}
+	
+	public Utente findByEmailAndPassword(Utente model) throws EntityNotFoundError {
+		SqlMapFactory.instance().openSession();
 
+		UtenteMapper mapper = SqlMapFactory.instance().getMapper(UtenteMapper.class);
+		Utente ret = mapper.findByEmailAndPassword(model);
+
+		SqlMapFactory.instance().closeSession();
+		if(ret==null) {
+			throw new EntityNotFoundError();
+		}
+		
+		return ret;
+
+	}
+	
+	
+	public void updatePassword(Utente model) {
+		SqlMapFactory.instance().openSession();
+
+		UtenteMapper mapper = SqlMapFactory.instance().getMapper(UtenteMapper.class);
+
+		mapper.updatePassword(model);
+		SqlMapFactory.instance().commitSession();
+		SqlMapFactory.instance().closeSession();
+		
+	}
+	
+	
+	
+	
+	
+	
 }

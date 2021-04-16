@@ -21,10 +21,13 @@ select * from utente where id = #{id}; </select>
 <select id="findAll" resultType="it.condominio.model.Utente">select * from utente </select>
 
 
+<update parameterType="it.condominio.model.Utente" id="updatePassword">
+update utente set password = #{password} , cambia_password = 0  where id = #{id} 
+</update>
 
 
-
-
+<select parameterType="it.condominio.model.Utente" id="findByEmailAndPassword" resultType="it.condominio.model.Utente">
+select * from utente where email = #{email} and password = #{password} ; </select>
 
 
 
