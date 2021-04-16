@@ -32,10 +32,10 @@ public class UtenteTest {
 //		
 //		System.out.println(test.toString());
 		
-		crud.updatePassword(model);
+//		crud.updatePassword(model);
 		
 		
-		
+		System.out.println("Stampa qui");
 		
 		
 		
