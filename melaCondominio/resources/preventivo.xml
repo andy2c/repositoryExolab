@@ -6,29 +6,30 @@
 <mapper namespace="it.condominio.mapper.PreventivoMapper">
 
 
+    <insert keyColumn="id" keyProperty="id" useGeneratedKeys="true"
+		parameterType="it.condominio.model.Preventivo" id="insert">
+		insert into preventivo (ditta_nome, preventivo_prezzo ) values
+		(#{ditta_nome}, #{preventivo_prezzo} )
+	</insert>
+
+	<update parameterType="it.condominio.model.Preventivo" id="update">
+		update preventivo set ditta_nome = #{ditta_nome}, ditta_telefono = #{ditta_telefono}, ditta_email = #{ditta_email},
+		ditta_via = #{ditta_via} , ditta_referente = #{ditta_referente}, preventivo_percorso = #{preventivo_percorso}, preventivo_prezzo = #{preventivo_prezzo}
+		, preventivo_durata_lavori = #{preventivo_durata_lavori}, preventivo_inizio_lavori = #{preventivo_inizio_lavori} 
+		where id = #{id}
+	</update>
+
+	<delete parameterType="int" id="delete">delete from preventivo where id =
+		#{id}; </delete>
+
+	<select parameterType="int" id="find"
+		resultType="it.condominio.model.Preventivo">
+		select * from preventivo where id = #{id};
+	</select>
+
+	<select id="findAll" resultType="it.condominio.model.Preventivo">select * from preventivo </select>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	
 
 </mapper>

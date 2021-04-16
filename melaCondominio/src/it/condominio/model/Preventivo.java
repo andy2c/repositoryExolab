@@ -1,6 +1,7 @@
 package it.condominio.model;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Preventivo {
@@ -14,7 +15,7 @@ public class Preventivo {
 	private String preventivo_percorso;
 	private double preventivo_prezzo;
 	private int preventivo_durata_lavori;
-	private Date preventivo_inizio_lavori;
+	private LocalDate preventivo_inizio_lavori;
 	public int getId() {
 		return id;
 	}
@@ -75,18 +76,18 @@ public class Preventivo {
 	public void setPreventivo_durata_lavori(int preventivo_durata_lavori) {
 		this.preventivo_durata_lavori = preventivo_durata_lavori;
 	}
-	public Date getPreventivo_inizio_lavori() {
+	public LocalDate getPreventivo_inizio_lavori() {
 		return preventivo_inizio_lavori;
 	}
-	public void setPreventivo_inizio_lavori(Date preventivo_inizio_lavori) {
+	public void setPreventivo_inizio_lavori(LocalDate preventivo_inizio_lavori) {
 		this.preventivo_inizio_lavori = preventivo_inizio_lavori;
 	}
-	public Preventivo(int id, Timestamp data_creazione, String ditta_nome, String ditta_telefono, String ditta_email,
+	public Preventivo(int id,  String ditta_nome, String ditta_telefono, String ditta_email,
 			String ditta_via, String ditta_referente, String preventivo_percorso, double preventivo_prezzo,
-			int preventivo_durata_lavori, Date preventivo_inizio_lavori) {
-		super();
+			int preventivo_durata_lavori, LocalDate preventivo_inizio_lavori) {
+		
 		this.id = id;
-		this.data_creazione = data_creazione;
+		
 		this.ditta_nome = ditta_nome;
 		this.ditta_telefono = ditta_telefono;
 		this.ditta_email = ditta_email;
@@ -97,11 +98,11 @@ public class Preventivo {
 		this.preventivo_durata_lavori = preventivo_durata_lavori;
 		this.preventivo_inizio_lavori = preventivo_inizio_lavori;
 	}
-	public Preventivo(Timestamp data_creazione, String ditta_nome, String ditta_telefono, String ditta_email,
+	public Preventivo( String ditta_nome, String ditta_telefono, String ditta_email,
 			String ditta_via, String ditta_referente, String preventivo_percorso, double preventivo_prezzo,
-			int preventivo_durata_lavori, Date preventivo_inizio_lavori) {
+			int preventivo_durata_lavori, LocalDate preventivo_inizio_lavori) {
 		super();
-		this.data_creazione = data_creazione;
+		
 		this.ditta_nome = ditta_nome;
 		this.ditta_telefono = ditta_telefono;
 		this.ditta_email = ditta_email;
@@ -123,6 +124,11 @@ public class Preventivo {
 				+ ", ditta_referente=" + ditta_referente + ", preventivo_percorso=" + preventivo_percorso
 				+ ", preventivo_prezzo=" + preventivo_prezzo + ", preventivo_durata_lavori=" + preventivo_durata_lavori
 				+ ", preventivo_inizio_lavori=" + preventivo_inizio_lavori + "]";
+	}
+	public Preventivo(String ditta_nome, double preventivo_prezzo) {
+		super();
+		this.ditta_nome = ditta_nome;
+		this.preventivo_prezzo = preventivo_prezzo;
 	}
 	
 	
