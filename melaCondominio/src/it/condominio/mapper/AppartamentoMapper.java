@@ -6,13 +6,13 @@ import it.condominio.model.Appartamento;
 
 
 public interface AppartamentoMapper {
-	public void insert(Appartamento appartamento);
+	public void insert(Appartamento appartamento);   // fatta
 
-	public void update(Appartamento appartamento);
+	public void update(Appartamento appartamento);    // fatta
 
-	public void delete(int id);
+	public void delete(int id);  // fatta
 
-	public Appartamento find(int id);
+	public Appartamento find(int id); // fatta  con mappa
 
-	public List<Appartamento> findAll();
+	public List<Appartamento> findAll();  // fatta con mappa
 }
