@@ -7,6 +7,26 @@
 
 
 
+<insert keyColumn="id" keyProperty="id" useGeneratedKeys="true"
+		parameterType="it.condominio.model.Stato" id="insert">
+		insert into stato(nome ) values
+		(#{nome})
+	</insert>
+
+	<update parameterType="it.condominio.model.Stato" id="update">
+		update stato set nome = #{nome} where id = #{id}
+	</update>
+
+	<delete parameterType="int" id="delete">delete from stato where id =
+		#{id}; </delete>
+
+	<select parameterType="int" id="find"
+		resultType="it.condominio.model.Stato">
+		select * from stato where id = #{id};
+	</select>
+
+	<select id="findAll" resultType="it.condominio.model.Stato">select * from stato </select>
+ 
 
 
 
