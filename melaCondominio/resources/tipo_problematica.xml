@@ -15,6 +15,29 @@
 
 
 
+<insert keyColumn="id" keyProperty="id" useGeneratedKeys="true"
+		parameterType="it.condominio.model.Tipo_problematica" id="insert">
+		insert into tipo_problematica(nome ) values
+		(#{nome})
+	</insert>
+
+	<update parameterType="it.condominio.model.Tipo_problematica" id="update">
+		update tipo_problematica set nome = #{nome} where id = #{id}
+	</update>
+
+	<delete parameterType="int" id="delete">delete from tipo_problematica where id =
+		#{id}; </delete>
+
+	<select parameterType="int" id="find"
+		resultType="it.condominio.model.Tipo_problematica">
+		select * from tipo_problematica where id = #{id};
+	</select>
+
+	<select id="findAll" resultType="it.condominio.model.Tipo_problematica">select * from tipo_problematica </select>
+ 
+
+
+
 
 
 
