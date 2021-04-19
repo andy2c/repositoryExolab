@@ -2,6 +2,7 @@ package it.condominio.model;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 public class Riunione {
 	private int id;
@@ -9,6 +10,15 @@ public class Riunione {
 	private String nome_verbale;
 	private String verbale_contenuto;
 	private String verbale_percorso;
+	private List<Problematica> problematiche;
+	
+	
+	public List<Problematica> getProblematiche() {
+		return problematiche;
+	}
+	public void setProblematiche(List<Problematica> problematiche) {
+		this.problematiche = problematiche;
+	}
 	public int getId() {
 		return id;
 	}
@@ -62,8 +72,10 @@ public class Riunione {
 	@Override
 	public String toString() {
 		return "Riunione [id=" + id + ", data_riunione=" + data_riunione + ", nome_verbale=" + nome_verbale
-				+ ", verbale_contenuto=" + verbale_contenuto + ", verbale_percorso=" + verbale_percorso + "]";
+				+ ", verbale_contenuto=" + verbale_contenuto + ", verbale_percorso=" + verbale_percorso
+				+ ", problematiche=" + problematiche + "]";
 	}
+	
 	
 	
 	
