@@ -5,6 +5,67 @@
  
 <mapper namespace="it.condominio.mapper.RiunioneMapper">
 
+    <resultMap id="riunioneWithProblematica"
+		type="it.condominio.model.Riunione">
+		    <result property="id" column="riunione_id" />
+			<result property="data_riunione" column="data_riunione" />
+			<result property="nome_verbale" column="nome_verbale" />
+			<result property="verbale_contenuto"
+				column="verbale_contenuto" />
+			<result property="verbale_percorso" column="verbale_percorso" />
+
+       <collection property="problematiche"
+				ofType="it.condominio.model.Problematica">
+
+				<id property="id" column="problematica_id" />
+				<result property="oggetto_problematica"
+					column="oggetto_problematica" />
+				<result property="descrizione_problematica"
+					column="descrizione_problematica" />
+				<result property="problematica_percorso"
+					column="problematica_percorso" />
+				<result property="id_tipo_problematica"
+					column="id_tipo_problematica" />
+				<result property="id_stato_problematica"
+					column="id_stato_problematica" />
+
+				<association property="tipo_problematica"
+					javaType="it.condominio.model.Tipo_problematica"
+					column="id_tipo_problematica">
+					<result property="id" column="tipo_problematica_id" />
+					<result property="nome" column="tipo_problematica_nome" />
+				</association>
+
+				<association property="stato"
+					javaType="it.condominio.model.Stato" column="id_stato_problematica">
+					<result property="id" column="stato_id" />
+					<result property="nome" column="stato_nome" />
+				</association>
+
+			</collection>
+
+
+	</resultMap>
+
+  <select parameterType="int" id="find"
+		resultMap="riunioneWithProblematica">
+		
+		SELECT r.id riunione_id,r.data_riunione,r.nome_verbale,r.verbale_contenuto,r.verbale_percorso ,
+ p.id problematica_id,p.oggetto_problematica,p.descrizione_problematica,p.problematica_percorso,p.id_tipo_problematica,p.id_stato_problematica,
+  tp.id tipo_problematica_id , tp.nome tipo_problematica_nome ,
+   st.id stato_id , st.nome stato_nome 
+ 
+ FROM riunione r 
+ INNER JOIN filtro_riunione f ON r.id=f.id_riunione INNER JOIN problematica p ON f.id_problematica=p.id INNER JOIN tipo_problematica tp ON p.id_tipo_problematica=tp.id
+  INNER JOIN stato st ON p.id_stato_problematica=st.id 
+ 
+  WHERE r.id=  #{id};
+		
+	
+	</select>
+
+
+
 <insert keyColumn="id" keyProperty="id" useGeneratedKeys="true"
 		parameterType="it.condominio.model.Riunione" id="insert">
 		insert into riunione (data_riunione , nome_verbale , verbale_contenuto, verbale_percorso ) values
@@ -19,12 +80,41 @@
 	<delete parameterType="int" id="delete">delete from riunione where id =
 		#{id}; </delete>
 
-	<select parameterType="int" id="find"
-		resultType="it.condominio.model.Riunione">
-		select * from riunione where id = #{id};
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	<select id="findAll" resultMap="riunioneWithProblematica">
+	SELECT r.id riunione_id,r.data_riunione,r.nome_verbale,r.verbale_contenuto,r.verbale_percorso ,
+ p.id problematica_id,p.oggetto_problematica,p.descrizione_problematica,p.problematica_percorso,p.id_tipo_problematica,p.id_stato_problematica,
+  tp.id tipo_problematica_id , tp.nome tipo_problematica_nome ,
+   st.id stato_id , st.nome stato_nome 
+ 
+ FROM riunione r 
+ INNER JOIN filtro_riunione f ON r.id=f.id_riunione INNER JOIN problematica p ON f.id_problematica=p.id INNER JOIN tipo_problematica tp ON p.id_tipo_problematica=tp.id
+  INNER JOIN stato st ON p.id_stato_problematica=st.id 
+
+		 
 	</select>
 
-	<select id="findAll" resultType="it.condominio.model.Riunione">select * from riunione </select>
+
+
+
+
+
+
+
+
+<!-- <select parameterType="int" id="find" -->
+<!-- 		resultType="it.condominio.model.Riunione"> -->
+<!-- 		select * from riunione where id = #{id}; -->
+<!-- 	</select> -->
 
 
 </mapper>
