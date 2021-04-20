@@ -40,19 +40,18 @@ public class Delega {
 	public void setRiunione(Riunione riunione) {
 		this.riunione = riunione;
 	}
-	public Delega(int id, String percorso_delega, int id_riunione, Timestamp data_creazione, Riunione riunione) {
-		super();
+	public Delega(int id, String percorso_delega, int id_riunione) {
+		
 		this.id = id;
 		this.percorso_delega = percorso_delega;
 		this.id_riunione = id_riunione;
-		this.data_creazione = data_creazione;
-		this.riunione = riunione;
+		
 	}
-	public Delega(String percorso_delega, int id_riunione, Timestamp data_creazione) {
-		super();
+	public Delega(String percorso_delega, int id_riunione) {
+		
 		this.percorso_delega = percorso_delega;
 		this.id_riunione = id_riunione;
-		this.data_creazione = data_creazione;
+		
 	}
 	@Override
 	public String toString() {
