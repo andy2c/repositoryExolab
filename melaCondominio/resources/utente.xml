@@ -57,11 +57,16 @@
 		#{id}; </delete>
 
 	<select parameterType="int" id="find"
-		resultType="it.condominio.model.Utente">
-		select * from utente where id = #{id};
+		resultMap="utenteWithRuolo">
+		SELECT  u.*,r.id idR , r.nome nomeR FROM utente u INNER JOIN storico_utente s ON u.id=s.id_utente 
+        INNER JOIN ruolo r ON s.id_ruolo=r.id 
+        where u.id = #{id};
 	</select>
 
-	<select id="findAll" resultType="it.condominio.model.Utente">select * from utente </select>
+	<select id="findAll" resultMap="utenteWithRuolo">
+	  SELECT  u.*,r.id idR , r.nome nomeR FROM utente u INNER JOIN storico_utente s ON u.id=s.id_utente  
+        INNER JOIN ruolo r ON s.id_ruolo=r.id 
+	 </select>
 
 
 	
@@ -73,10 +78,15 @@
 <!-- 	</select> -->
 
 
+<!-- <select parameterType="int" id="find" -->
+<!-- 		resultType="it.condominio.model.Utente"> -->
+<!-- 		select * from utente where id = #{id}; -->
+<!-- 	</select> -->
 
 
-
-
+<!--    <select id="findAll" resultType="it.condominio.model.Utente"> -->
+<!-- 	select * from utente -->
+<!-- 	 </select> -->
 
 
 
