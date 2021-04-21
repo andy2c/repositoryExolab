@@ -74,8 +74,8 @@ public class VotoCRUD {
 		soluzione = soluzione_crud.find(ret.getId_soluzione());
 		ret.setSoluzione(soluzione);
 		
-//		presenza_riunione = presenza_riunione_crud.find(ret.getId_presenza_riunione());
-//		ret.setPresenza_riunione(presenza_riunione);
+		presenza_riunione = presenza_riunione_crud.find(ret.getId_presenza_riunione());
+		ret.setPresenza_riunione(presenza_riunione);
 		return ret;
 
 	}
