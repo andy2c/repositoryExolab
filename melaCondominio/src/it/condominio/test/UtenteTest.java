@@ -36,16 +36,22 @@ public class UtenteTest {
 		
 //		crud.updatePassword(model);
 		
-		try {
-			Utente test = crud.findByEmailAndPassword(model);
-			System.out.println(test.toString());
-		} catch (EntityNotFoundError e) {
-			
-		}
+//		try {
+//			Utente test = crud.findByEmailAndPassword(model);
+//			System.out.println(test.toString());
+//		} catch (EntityNotFoundError e) {
+//			
+//		}
+//		
+		
+//		List<Utente>  lista = crud.findRappresentantiAttivi();
+//		for(Utente u : lista)
+//			System.out.println(u.toString());
 		
 		
-		
-		
+//		List<Utente>  lista = crud.findProprietarioAttivo();
+//		for(Utente u : lista)
+//			System.out.println(u.toString());
 		
 	}
 

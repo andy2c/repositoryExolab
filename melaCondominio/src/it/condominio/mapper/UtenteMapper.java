@@ -2,6 +2,7 @@ package it.condominio.mapper;
 
 import java.util.List;
 
+import it.condominio.model.Ruolo;
 import it.condominio.model.Utente;
 
 
@@ -19,4 +20,9 @@ public interface UtenteMapper {
 	public Utente findByEmailAndPassword(Utente utente); // fatto   , se non trova nulla (quindi non combaciano) dà errore NullPointException 
 	
 	public void updatePassword(Utente utente);   // fatto
+	
+	public List<Utente> findRappresentantiAttivi();      // fatto
+	
+	public List<Utente> findProprietarioAttivo();      // fatto
+	
 }

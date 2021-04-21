@@ -70,27 +70,17 @@
 
 
 	
+   <select id="findRappresentantiAttivi" resultMap="utenteWithRuolo">
+   SELECT  u.*,r.id idR , r.nome nomeR  FROM utente u INNER JOIN storico_utente su ON u.id = su.id_utente  
+INNER JOIN ruolo r ON su.id_ruolo = r.id INNER JOIN stato s ON su.id_stato=s.id 
+WHERE r.nome="rappresentante appartamento" AND s.nome="attivo"
+   </select>
 
-
-<!-- 	<select parameterType="it.condominio.model.Utente" -->
-<!-- 		id="findByEmailAndPassword" resultType="it.condominio.model.Utente"> -->
-<!-- 		select * from utente where email = #{email} and password = #{password} ; -->
-<!-- 	</select> -->
-
-
-<!-- <select parameterType="int" id="find" -->
-<!-- 		resultType="it.condominio.model.Utente"> -->
-<!-- 		select * from utente where id = #{id}; -->
-<!-- 	</select> -->
-
-
-<!--    <select id="findAll" resultType="it.condominio.model.Utente"> -->
-<!-- 	select * from utente -->
-<!-- 	 </select> -->
-
-
-
-
+  <select id="findProprietarioAttivo" resultMap="utenteWithRuolo">
+   SELECT  u.*,r.id idR , r.nome nomeR  FROM utente u INNER JOIN storico_utente su ON u.id = su.id_utente  
+INNER JOIN ruolo r ON su.id_ruolo = r.id INNER JOIN stato s ON su.id_stato=s.id 
+WHERE r.nome="proprietario appartamento" AND s.nome="attivo"
+   </select>
 
 
 

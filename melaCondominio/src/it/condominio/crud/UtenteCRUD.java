@@ -94,8 +94,30 @@ public class UtenteCRUD {
 		
 	}
 	
-	
-	
+	public List<Utente> findRappresentantiAttivi() {
+
+		SqlMapFactory.instance().openSession();
+
+		UtenteMapper mapper = SqlMapFactory.instance().getMapper(UtenteMapper.class);
+		List<Utente> ret = mapper.findRappresentantiAttivi();
+
+		SqlMapFactory.instance().closeSession();
+
+		return ret;
+
+	}
+	public List<Utente> findProprietarioAttivo() {
+
+		SqlMapFactory.instance().openSession();
+
+		UtenteMapper mapper = SqlMapFactory.instance().getMapper(UtenteMapper.class);
+		List<Utente> ret = mapper.findProprietarioAttivo();
+
+		SqlMapFactory.instance().closeSession();
+
+		return ret;
+
+	}
 	
 	
 	
