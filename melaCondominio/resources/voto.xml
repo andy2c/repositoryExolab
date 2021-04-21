@@ -5,9 +5,17 @@
  
 <mapper namespace="it.condominio.mapper.VotoMapper">
 
+   <insert id="insert"  keyColumn="id" keyProperty="id" useGeneratedKeys="true" parameterType="it.condominio.model.Voto">
+   
+   insert into voto ( voto , id_presenza_riunione ,id_soluzione) values ( #{voto},#{id_presenza_riunione},#{id_soluzione})
+   
+   </insert>
 
-
-
+  <select  id="find" parameterType="int" resultType="it.condominio.model.Voto" >
+  
+  select  *  from voto  where id= #{id}
+  
+  </select>
 
 
 
