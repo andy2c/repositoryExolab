@@ -72,8 +72,21 @@ public class Storico_utenteCRUD extends BaseUtil{
 
 		Storico_utenteMapper mapper = SqlMapFactory.instance().getMapper(Storico_utenteMapper.class);
 		List<Storico_utente> ret = mapper.findAll();
-
 		SqlMapFactory.instance().closeSession();
+		for(Storico_utente s : ret) {
+			utente = utente_crud.find(s.getId_utente());
+			ruolo = ruolo_crud.find(s.getId_ruolo());
+			appartamento = appartamento_crud.find(s.getId_appartamento());
+			stato = stato_crud.find(s.getId_stato());
+			
+			s.setUtente(utente);
+			s.setRuolo(ruolo);
+			s.setAppartamento(appartamento);
+			s.setStato(stato);
+			
+		}
+		
+		
 		
 		return ret;
 		
