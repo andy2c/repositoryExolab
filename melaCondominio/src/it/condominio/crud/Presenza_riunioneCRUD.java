@@ -3,6 +3,7 @@ package it.condominio.crud;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.condominio.exception.EntityNotFoundError;
 import it.condominio.mapper.Presenza_riunioneMapper;
 import it.condominio.model.Presenza_riunione;
 import it.condominio.model.Riunione;
@@ -11,7 +12,7 @@ import it.condominio.util.SqlMapFactory;
 
 public class Presenza_riunioneCRUD {
 	private Presenza_riunioneMapper mapper;
-	private Presenza_riunione ret = new Presenza_riunione();
+	private Presenza_riunione ret = null;
 	private List<Presenza_riunione> list = new ArrayList<Presenza_riunione>();
 	private Storico_utente storico_utente = new Storico_utente();
 	private Storico_utenteCRUD storico_utente_crud = new Storico_utenteCRUD();
@@ -51,7 +52,7 @@ public class Presenza_riunioneCRUD {
 		SqlMapFactory.instance().closeSession();
 	}
 
-	public Presenza_riunione find(int id) {
+	public Presenza_riunione find(int id) throws EntityNotFoundError {
 		SqlMapFactory.instance().openSession();
 
 		mapper = SqlMapFactory.instance().getMapper(Presenza_riunioneMapper.class);
@@ -63,12 +64,14 @@ public class Presenza_riunioneCRUD {
 
 		ret.setStorico_utente(storico_utente);
 		ret.setRiunione(riunione);
-
+		if (ret == null) {
+			throw new EntityNotFoundError();
+		}
 		return ret;
 
 	}
 
-	public List<Presenza_riunione> findAll() {
+	public List<Presenza_riunione> findAll() throws EntityNotFoundError {
 
 		SqlMapFactory.instance().openSession();
 

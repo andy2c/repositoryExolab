@@ -3,6 +3,7 @@ package it.condominio.crud;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.condominio.exception.EntityNotFoundError;
 import it.condominio.mapper.Storico_utenteMapper;
 import it.condominio.model.Appartamento;
 import it.condominio.model.Ruolo;
@@ -13,7 +14,7 @@ import it.condominio.util.SqlMapFactory;
 
 public class Storico_utenteCRUD {
 	private Storico_utenteMapper mapper;
-	private Storico_utente ret = new Storico_utente();
+	private Storico_utente ret = null;
 	private List<Storico_utente> list = new ArrayList<Storico_utente>();
 	private Utente utente = new Utente();
 	private UtenteCRUD utente_crud = new UtenteCRUD();
@@ -57,13 +58,15 @@ public class Storico_utenteCRUD {
 		SqlMapFactory.instance().closeSession();
 	}
 
-	public Storico_utente find(int id) {
+	public Storico_utente find(int id) throws EntityNotFoundError {
 		SqlMapFactory.instance().openSession();
 
 		mapper = SqlMapFactory.instance().getMapper(Storico_utenteMapper.class);
 		ret = mapper.find(id);
 		SqlMapFactory.instance().closeSession();
-
+		if (ret == null) {
+			throw new EntityNotFoundError();
+		}
 		utente = utente_crud.find(ret.getId_utente());
 		ruolo = ruolo_crud.find(ret.getId_ruolo());
 		appartamento = appartamento_crud.find(ret.getId_appartamento());
@@ -78,7 +81,7 @@ public class Storico_utenteCRUD {
 
 	}
 
-	public List<Storico_utente> findAll() {
+	public List<Storico_utente> findAll() throws EntityNotFoundError {
 
 		SqlMapFactory.instance().openSession();
 

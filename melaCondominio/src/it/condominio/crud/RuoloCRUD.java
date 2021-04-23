@@ -3,13 +3,14 @@ package it.condominio.crud;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.condominio.exception.EntityNotFoundError;
 import it.condominio.mapper.RuoloMapper;
 import it.condominio.model.Ruolo;
 import it.condominio.util.SqlMapFactory;
 
 public class RuoloCRUD {
 	private RuoloMapper mapper;
-	private Ruolo ret = new Ruolo();
+	private Ruolo ret = null;
 	private List<Ruolo> list = new ArrayList<Ruolo>();
 
 	public void insert(Ruolo model) {
@@ -45,14 +46,16 @@ public class RuoloCRUD {
 		SqlMapFactory.instance().closeSession();
 	}
 
-	public Ruolo find(int id) {
+	public Ruolo find(int id) throws EntityNotFoundError {
 		SqlMapFactory.instance().openSession();
 
 		mapper = SqlMapFactory.instance().getMapper(RuoloMapper.class);
 		ret = mapper.find(id);
 
 		SqlMapFactory.instance().closeSession();
-
+		if (ret == null) {
+			throw new EntityNotFoundError();
+		}
 		return ret;
 
 	}

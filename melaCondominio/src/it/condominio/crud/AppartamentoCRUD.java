@@ -3,13 +3,14 @@ package it.condominio.crud;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.condominio.exception.EntityNotFoundError;
 import it.condominio.mapper.AppartamentoMapper;
 import it.condominio.model.Appartamento;
 import it.condominio.util.SqlMapFactory;
 
 public class AppartamentoCRUD {
 	private AppartamentoMapper mapper;
-	private Appartamento ret = new Appartamento();
+	private Appartamento ret = null;
 	private List<Appartamento> list = new ArrayList<Appartamento>();
 	public void insert(Appartamento model) {
 
@@ -44,7 +45,7 @@ public class AppartamentoCRUD {
 		SqlMapFactory.instance().closeSession();
 	}
 
-	public Appartamento find(int id) {
+	public Appartamento find(int id) throws EntityNotFoundError {
 		SqlMapFactory.instance().openSession();
 
 		mapper = SqlMapFactory.instance().getMapper(AppartamentoMapper.class);
@@ -52,6 +53,9 @@ public class AppartamentoCRUD {
 
 		SqlMapFactory.instance().closeSession();
 
+		if (ret == null) {
+			throw new EntityNotFoundError();
+		}
 		return ret;
 
 	}

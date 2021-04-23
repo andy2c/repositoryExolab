@@ -3,6 +3,7 @@ package it.condominio.crud;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.condominio.exception.EntityNotFoundError;
 import it.condominio.mapper.VotoMapper;
 import it.condominio.model.Presenza_riunione;
 import it.condominio.model.Soluzione;
@@ -10,7 +11,7 @@ import it.condominio.model.Voto;
 import it.condominio.util.SqlMapFactory;
 
 public class VotoCRUD {
-	private Soluzione soluzione = new Soluzione();
+	private Soluzione soluzione = null;
 	private SoluzioneCRUD soluzione_crud = new SoluzioneCRUD();
 	private Presenza_riunione presenza_riunione = new Presenza_riunione();
 	private Presenza_riunioneCRUD presenza_riunione_crud = new Presenza_riunioneCRUD();
@@ -65,13 +66,15 @@ public class VotoCRUD {
 
 	}
 
-	public Voto find(int id) {
+	public Voto find(int id) throws EntityNotFoundError {
 		SqlMapFactory.instance().openSession();
 
 		mapper = SqlMapFactory.instance().getMapper(VotoMapper.class);
 		ret = mapper.find(id);
 		SqlMapFactory.instance().closeSession();
-
+		if (ret == null) {
+			throw new EntityNotFoundError();
+		}
 		soluzione = soluzione_crud.find(ret.getId_soluzione());
 		ret.setSoluzione(soluzione);
 

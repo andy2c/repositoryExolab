@@ -20,7 +20,7 @@ public class Ruoli_delegaTest {
 		
 //		crud.delete(3);
 		
-		test = crud.find(2);
+//		test = crud.find(2);
 		
 //		System.out.println(test.toString());
 		

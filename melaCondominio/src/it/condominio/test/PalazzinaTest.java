@@ -14,11 +14,11 @@ public class PalazzinaTest {
 		Palazzina model = new Palazzina(4, "palazzoA23", "via Gioconda", "Milano", "Lombardia");
 		List<Palazzina> list = new ArrayList<Palazzina>();
 		
-		test = crud.find(3);
+	//	test = crud.find(3);
 	//	System.out.println(test.toString());
-		list = crud.findAll();
-		for(Palazzina p : list)
-			System.out.println(p.toString());
+//		list = crud.findAll();
+//		for(Palazzina p : list)
+//			System.out.println(p.toString());
 		
 		
 		

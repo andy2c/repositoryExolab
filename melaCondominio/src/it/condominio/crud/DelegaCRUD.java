@@ -3,13 +3,14 @@ package it.condominio.crud;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.condominio.exception.EntityNotFoundError;
 import it.condominio.mapper.DelegaMapper;
 import it.condominio.model.Delega;
 import it.condominio.util.SqlMapFactory;
 
 public class DelegaCRUD {
 	private DelegaMapper mapper;
-	private Delega ret = new Delega();
+	private Delega ret = null;
 	private List<Delega> list = new ArrayList<Delega>();
 	public void insert(Delega model) {
 
@@ -44,7 +45,7 @@ public class DelegaCRUD {
 		SqlMapFactory.instance().closeSession();
 	}
 
-	public Delega find(int id) {
+	public Delega find(int id) throws EntityNotFoundError {
 		SqlMapFactory.instance().openSession();
 
 		mapper = SqlMapFactory.instance().getMapper(DelegaMapper.class);
@@ -52,6 +53,9 @@ public class DelegaCRUD {
 
 		SqlMapFactory.instance().closeSession();
 
+		if (ret == null) {
+			throw new EntityNotFoundError();
+		}
 		return ret;
 
 	}

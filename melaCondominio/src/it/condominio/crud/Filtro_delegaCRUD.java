@@ -3,13 +3,14 @@ package it.condominio.crud;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.condominio.exception.EntityNotFoundError;
 import it.condominio.mapper.Filtro_delegaMapper;
 import it.condominio.model.Filtro_delega;
 import it.condominio.util.SqlMapFactory;
 
 public class Filtro_delegaCRUD {
 	private Filtro_delegaMapper mapper;
-	private Filtro_delega ret = new Filtro_delega();
+	private Filtro_delega ret = null;
 	private List<Filtro_delega> list = new ArrayList<Filtro_delega>();
 
 	public void insert(Filtro_delega model) {
@@ -45,16 +46,18 @@ public class Filtro_delegaCRUD {
 		SqlMapFactory.instance().closeSession();
 	}
 
-	public Filtro_delega find(int id) {
+	public Filtro_delega find(int id) throws EntityNotFoundError {
 		SqlMapFactory.instance().openSession();
 
 		mapper = SqlMapFactory.instance().getMapper(Filtro_delegaMapper.class);
 		ret = mapper.find(id);
 
 		SqlMapFactory.instance().closeSession();
-
+		if (ret == null) {
+			throw new EntityNotFoundError();
+		}
 		return ret;
-
+		
 	}
 
 	public List<Filtro_delega> findAll() {
