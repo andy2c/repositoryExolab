@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+ 
 <c:if test="${user==null }">
 	<jsp:forward page="logIn.jsp"></jsp:forward>
 </c:if>
