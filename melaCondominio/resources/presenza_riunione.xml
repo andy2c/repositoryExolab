@@ -5,17 +5,31 @@
  
 <mapper namespace="it.condominio.mapper.Presenza_riunioneMapper">
 
+    <insert id="insert" keyColumn="id" keyProperty="id" useGeneratedKeys="true" >
+    insert into presenza_riunione ( presenza , id_storico_utente , id_riunione) values (
+    0 , #{id_storico_utente}, #{id_riunione} )
+    </insert>
+
+   <update id="update" parameterType="it.condominio.model.Presenza_riunione">
+   update presenza_riunione set presenza = #{presenza},id_storico_utente = #{id_storico_utente},id_riunione = #{id_riunione} 
+   where id = #{id};
+   </update> 
+
+  <delete id="delete" parameterType="int">
+  delete from  presenza_riunione where id=#{id};
+  </delete>
 
 
+  <select id="find" parameterType="int" resultType="it.condominio.model.Presenza_riunione">
+  SELECT * FROM presenza_riunione WHERE id = #{id};
+  
+  </select>
 
-
-
-
-
-
-
-
-
+  <select id="findAll" resultType="it.condominio.model.Presenza_riunione">
+  SELECT * FROM presenza_riunione
+  
+  </select>
+  
 
 
 

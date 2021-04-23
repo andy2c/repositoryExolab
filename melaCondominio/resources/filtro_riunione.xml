@@ -7,7 +7,11 @@
 
 
 
-
+   <insert id="insert"  parameterType="it.condominio.model.Filtro_riunione" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+   
+   insert into filtro_riunione ( id_riunione ,id_problematica) values ( #{id_riunione},#{id_problematica})
+   
+   </insert>
 
 
 

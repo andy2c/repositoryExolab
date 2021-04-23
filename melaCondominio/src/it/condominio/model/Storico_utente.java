@@ -1,11 +1,12 @@
 package it.condominio.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Storico_utente {
 	private int id;
-	private Date data_inizio;
-	private Date data_fine;
+	private LocalDate data_inizio;
+	private LocalDate data_fine;
 	private int id_utente;
 	private int id_ruolo;
 	private int id_appartamento;
@@ -21,16 +22,16 @@ public class Storico_utente {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Date getData_inizio() {
+	public LocalDate getData_inizio() {
 		return data_inizio;
 	}
-	public void setData_inizio(Date data_inizio) {
+	public void setData_inizio(LocalDate data_inizio) {
 		this.data_inizio = data_inizio;
 	}
-	public Date getData_fine() {
+	public LocalDate getData_fine() {
 		return data_fine;
 	}
-	public void setData_fine(Date data_fine) {
+	public void setData_fine(LocalDate data_fine) {
 		this.data_fine = data_fine;
 	}
 	public int getId_utente() {
@@ -89,26 +90,23 @@ public class Storico_utente {
 	public void setStato(Stato stato) {
 		this.stato = stato;
 	}
-	public Storico_utente(int id, Date data_inizio, Date data_fine, int id_utente, int id_ruolo, int id_appartamento,
-			int id_stato, Utente utente, Ruolo ruolo, Appartamento appartamento, Stato stato) {
-		super();
+	public Storico_utente(int id, LocalDate data_inizio, int id_utente, int id_ruolo, int id_appartamento,
+			int id_stato) {
+		
 		this.id = id;
 		this.data_inizio = data_inizio;
-		this.data_fine = data_fine;
+		
 		this.id_utente = id_utente;
 		this.id_ruolo = id_ruolo;
 		this.id_appartamento = id_appartamento;
 		this.id_stato = id_stato;
-		this.utente = utente;
-		this.ruolo = ruolo;
-		this.appartamento = appartamento;
-		this.stato = stato;
+	
 	}
-	public Storico_utente(Date data_inizio, Date data_fine, int id_utente, int id_ruolo, int id_appartamento,
+	public Storico_utente(LocalDate data_inizio,  int id_utente, int id_ruolo, int id_appartamento,
 			int id_stato) {
-		super();
+		
 		this.data_inizio = data_inizio;
-		this.data_fine = data_fine;
+		
 		this.id_utente = id_utente;
 		this.id_ruolo = id_ruolo;
 		this.id_appartamento = id_appartamento;

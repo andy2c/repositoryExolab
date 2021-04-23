@@ -49,15 +49,19 @@ public class Presenza_riunione {
 	public void setRiunione(Riunione riunione) {
 		this.riunione = riunione;
 	}
-	public Presenza_riunione(int id, int presenza, int id_storico_utente, int id_riunione,
-			Storico_utente storico_utente, Riunione riunione) {
+	
+	
+	public Presenza_riunione(int id, int presenza, int id_storico_utente, int id_riunione) {
 		super();
 		this.id = id;
 		this.presenza = presenza;
 		this.id_storico_utente = id_storico_utente;
 		this.id_riunione = id_riunione;
-		this.storico_utente = storico_utente;
-		this.riunione = riunione;
+	}
+	public Presenza_riunione(int id_storico_utente, int id_riunione) {
+		super();
+		this.id_storico_utente = id_storico_utente;
+		this.id_riunione = id_riunione;
 	}
 	public Presenza_riunione(int presenza, int id_storico_utente, int id_riunione) {
 		super();

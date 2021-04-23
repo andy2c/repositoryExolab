@@ -1,5 +1,7 @@
 package it.condominio.model;
 
+import java.util.List;
+
 public class Utente {
 	private int id;
 	private String nome;
@@ -7,6 +9,15 @@ public class Utente {
 	private String email;
 	private String password;
 	private int cambia_password;
+	private List<Ruolo> ruoli ;
+	
+	
+	public List<Ruolo> getRuoli() {
+		return ruoli;
+	}
+	public void setRuoli(List<Ruolo> ruoli) {
+		this.ruoli = ruoli;
+	}
 	public int getId() {
 		return id;
 	}
@@ -64,10 +75,11 @@ public class Utente {
 	public Utente() {
 		
 	}
+	
 	@Override
 	public String toString() {
 		return "Utente [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", email=" + email + ", password="
-				+ password + ", cambia_password=" + cambia_password + "]";
+				+ password + ", cambia_password=" + cambia_password + ", ruoli=" + ruoli + "]";
 	}
 	public Utente(String nome, String cognome, String email, String password) {
 		super();
@@ -85,17 +97,11 @@ public class Utente {
 		this.password = password;
 	}
 	
-	/*
-	 * 
-	 * commento
-	 * 
-	 * 
-	 * 
-	 * 
-	 */
 	
 	
-	
+//	
+//	if(discount==null)
+//		discount = new Discount();
 	
 	
 	

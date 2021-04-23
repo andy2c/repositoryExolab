@@ -7,7 +7,12 @@
 
 
 
-
+     <insert id="insert" keyColumn="id" keyProperty="id" useGeneratedKeys="true" parameterType="it.condominio.model.Filtro_delega" >
+     
+         insert into filtro_delega ( id_storico_utente, id_delega , id_ruoli_delega) values ( #{id_storico_utente},#{id_delega},#{id_ruoli_delega})
+     
+     
+     </insert>
 
 
 

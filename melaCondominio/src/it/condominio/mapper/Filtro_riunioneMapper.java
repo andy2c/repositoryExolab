@@ -5,7 +5,7 @@ import java.util.List;
 import it.condominio.model.Filtro_riunione;
 
 public interface Filtro_riunioneMapper {
-	public void insert(Filtro_riunione filtro_riunione);
+	public void insert(Filtro_riunione filtro_riunione); // fatto , come accordato solo l'insert
 
 	public void update(Filtro_riunione filtro_riunione);
 

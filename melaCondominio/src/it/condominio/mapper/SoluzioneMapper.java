@@ -5,13 +5,13 @@ import java.util.List;
 import it.condominio.model.Soluzione;
 
 public interface SoluzioneMapper {
-	public void insert(Soluzione soluzione);
+	public void insert(Soluzione soluzione);  // fatto 
 
-	public void update(Soluzione soluzione);
+	public void update(Soluzione soluzione);  // fatto
 
-	public void delete(int id);
+	public void delete(int id);  // fatto
 
-	public Soluzione find(int id);
+	public Soluzione find(int id);  // fatto
 
-	public List<Soluzione> findAll();
+	public List<Soluzione> findAll();  // fatto
 }

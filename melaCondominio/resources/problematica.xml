@@ -5,28 +5,61 @@
  
 <mapper namespace="it.condominio.mapper.ProblematicaMapper">
 
+    <resultMap id="problematicaWithTipo_problematicaAndStato" type="it.condominio.model.Problematica">
+       <result property="id" column="id" />
+       <result property="oggetto_problematica" column="oggetto_problematica" />
+       <result property="descrizione_problematica"  column="descrizione_problematica" />
+       <result property="problematica_percorso"  column="problematica_percorso" />
+       <result property="id_tipo_problematica"  column="id_tipo_problematica" />
+       <result property="id_stato_problematica"  column="id_stato_problematica" />
+       
+       
+    <association property="tipo_problematica" javaType="it.condominio.model.Tipo_problematica"
+      column="id_tipo_problematica"  >
+        <id property="id" column="idT" />
+        <result property="nome" column="nomeT" />
+  
+    </association> 
+    
+    <association property="stato" javaType="it.condominio.model.Stato"
+      column="id_stato_problematica"  >
+        <id property="id" column="idS" />
+        <result property="nome" column="nomes" />
+   
+    </association> 
+
+  </resultMap>
 
 
 
+     <select parameterType="int" id="find"
+		resultMap="problematicaWithTipo_problematicaAndStato" >		
+		SELECT  p.*,t.id idT ,t.nome nomeT , s.id idS , s.nome nomeS FROM problematica p INNER JOIN tipo_problematica t ON p.id_tipo_problematica=t.id INNER JOIN stato s ON p.id_stato_problematica=s.id 
+        WHERE p.id = #{id};
+	</select>
 
 
 
+     <select id="findAll" resultMap="problematicaWithTipo_problematicaAndStato">
+     SELECT  p.*,t.id idT ,t.nome nomeT , s.id idS , s.nome nomeS FROM problematica p INNER JOIN tipo_problematica t ON p.id_tipo_problematica=t.id INNER JOIN stato s ON p.id_stato_problematica=s.id 
+       
+     </select>
 
+     
+     <insert keyColumn="id" keyProperty="id" useGeneratedKeys="true"
+		parameterType="it.condominio.model.Problematica" id="insert">
+		insert into problematica (oggetto_problematica , descrizione_problematica , problematica_percorso , id_tipo_problematica , id_stato_problematica ) values
+		(#{oggetto_problematica}, #{descrizione_problematica}, #{problematica_percorso}, #{id_tipo_problematica}, #{id_stato_problematica} )
+	</insert>
 
+	<update parameterType="it.condominio.model.Problematica" id="update">
+		update problematica set oggetto_problematica = #{oggetto_problematica}, descrizione_problematica = #{descrizione_problematica}, problematica_percorso = #{problematica_percorso},
+		id_tipo_problematica = #{id_tipo_problematica} , id_stato_problematica = #{id_stato_problematica}  
+		where id = #{id}
+	</update>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+	<delete parameterType="int" id="delete">delete from problematica where id =
+		#{id}; </delete>
 
 
 

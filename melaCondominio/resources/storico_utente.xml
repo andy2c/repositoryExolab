@@ -6,16 +6,32 @@
 <mapper namespace="it.condominio.mapper.Storico_utenteMapper">
 
 
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="it.condominio.model.Storico_utente" useGeneratedKeys="true" >
+    insert into storico_utente ( data_inizio , id_utente ,id_ruolo , id_appartamento, id_stato) values(
+      #{data_inizio},#{id_utente},#{id_ruolo},#{id_appartamento},#{id_stato})
+    </insert>
+
+    <update id="update" parameterType="it.condominio.model.Storico_utente" >
+    
+    update storico_utente set   data_inizio = #{data_inizio},id_utente = #{id_utente},id_ruolo = #{id_ruolo},id_appartamento = #{id_appartamento},id_stato = #{id_stato},
+    data_fine = #{data_fine} 
+   
+     where id = #{id};
+    </update>
 
 
+   <delete id="delete" parameterType="int">
+     delete from storico_utente where id = #{id};
+   
+   </delete>
 
+   <select id="find" parameterType="int" resultType="it.condominio.model.Storico_utente" >
+     SELECT * FROM storico_utente  WHERE id =  #{id};
+   </select>
 
-
-
-
-
-
-
+  <select id="findAll" resultType="it.condominio.model.Storico_utente">
+     SELECT * FROM storico_utente
+  </select>
 
 
 

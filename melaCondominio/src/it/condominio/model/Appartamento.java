@@ -52,6 +52,12 @@ public class Appartamento {
 		return "Appartamento [id=" + id + ", interno=" + interno + ", id_palazzina=" + id_palazzina + ", palazzina="
 				+ palazzina + "]";
 	}
+	public Appartamento(int id, String interno, int id_palazzina) {
+		super();
+		this.id = id;
+		this.interno = interno;
+		this.id_palazzina = id_palazzina;
+	}
 	
 	
 }

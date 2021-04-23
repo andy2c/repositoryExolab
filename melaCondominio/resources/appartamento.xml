@@ -5,7 +5,67 @@
  
 <mapper namespace="it.condominio.mapper.AppartamentoMapper">
 
+ <resultMap id="appartamentoWithPalazzina" type="it.condominio.model.Appartamento">
+       <result property="id" column="id" />
+       <result property="interno" column="interno" />
+       <result property="id_palazzina"  column="id_palazzina" />
+       
+       
+    <association property="palazzina" javaType="it.condominio.model.Palazzina"
+      column="id_palazzina"  >
+        <id property="id" column="idP" />
+        <result property="nome" column="nome" />
+        <result property="via" column="via" />
+        <result property="citta" column="citta" />
+        <result property="regione" column="regione" />
+       
+    
+    </association> 
 
+  </resultMap>
+
+
+<select parameterType="int" id="find" 
+		resultMap="appartamentoWithPalazzina" >
+		SELECT a.*, p.id idP , p.nome,p.via,p.citta,p.regione  FROM appartamento a INNER JOIN palazzina p ON a.id_palazzina=p.id 
+        WHERE a.id = #{id};
+	</select>
+
+
+
+
+
+<insert keyColumn="id" keyProperty="id" useGeneratedKeys="true"
+		parameterType="it.condominio.model.Appartamento" id="insert">
+		insert into appartamento(interno , id_palazzina) values
+		(#{interno},#{id_palazzina})
+	</insert>
+
+	<update parameterType="it.condominio.model.Appartamento" id="update">
+		update appartamento set interno = #{interno}, id_palazzina = #{id_palazzina} where id = #{id}
+	</update>
+
+	<delete parameterType="int" id="delete">delete from appartamento where id =
+		#{id}; </delete>
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+	<select id="findAll" resultMap="appartamentoWithPalazzina">
+	SELECT a.*, p.id idP , p.nome,p.via,p.citta,p.regione  FROM appartamento a INNER JOIN palazzina p ON a.id_palazzina=p.id 
+     
+	</select>
+ 
 
 
 

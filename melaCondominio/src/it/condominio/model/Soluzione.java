@@ -63,17 +63,16 @@ public class Soluzione {
 	public void setProblematica(Problematica problematica) {
 		this.problematica = problematica;
 	}
-	public Soluzione(int id, String nome, String descrizione, int id_stato, int id_problematica, int id_preventivo,
-			Stato stato, Problematica problematica) {
-		super();
+	public Soluzione(int id, String nome, String descrizione, int id_stato, int id_problematica, int id_preventivo
+			) {
+		
 		this.id = id;
 		this.nome = nome;
 		this.descrizione = descrizione;
 		this.id_stato = id_stato;
 		this.id_problematica = id_problematica;
 		this.id_preventivo = id_preventivo;
-		this.stato = stato;
-		this.problematica = problematica;
+	
 	}
 	public Soluzione(String nome, String descrizione, int id_stato, int id_problematica, int id_preventivo) {
 		super();
