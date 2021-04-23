@@ -1,5 +1,6 @@
 package it.condominio.crud;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import it.condominio.mapper.SoluzioneMapper;
@@ -7,11 +8,15 @@ import it.condominio.model.Soluzione;
 import it.condominio.util.SqlMapFactory;
 
 public class SoluzioneCRUD {
+	private SoluzioneMapper mapper;
+	private Soluzione ret = new Soluzione();
+	private List<Soluzione> list = new ArrayList<Soluzione>();
+
 	public void insert(Soluzione model) {
 
 		SqlMapFactory.instance().openSession();
 
-		SoluzioneMapper mapper = SqlMapFactory.instance().getMapper(SoluzioneMapper.class);
+		mapper = SqlMapFactory.instance().getMapper(SoluzioneMapper.class);
 
 		mapper.insert(model);
 		SqlMapFactory.instance().commitSession();
@@ -23,7 +28,7 @@ public class SoluzioneCRUD {
 
 		SqlMapFactory.instance().openSession();
 
-		SoluzioneMapper mapper = SqlMapFactory.instance().getMapper(SoluzioneMapper.class);
+		mapper = SqlMapFactory.instance().getMapper(SoluzioneMapper.class);
 
 		mapper.update(model);
 		SqlMapFactory.instance().commitSession();
@@ -33,7 +38,7 @@ public class SoluzioneCRUD {
 	public void delete(int id) {
 		SqlMapFactory.instance().openSession();
 
-		SoluzioneMapper mapper = SqlMapFactory.instance().getMapper(SoluzioneMapper.class);
+		mapper = SqlMapFactory.instance().getMapper(SoluzioneMapper.class);
 
 		mapper.delete(id);
 		SqlMapFactory.instance().commitSession();
@@ -43,8 +48,8 @@ public class SoluzioneCRUD {
 	public Soluzione find(int id) {
 		SqlMapFactory.instance().openSession();
 
-		SoluzioneMapper mapper = SqlMapFactory.instance().getMapper(SoluzioneMapper.class);
-		Soluzione ret = mapper.find(id);
+		mapper = SqlMapFactory.instance().getMapper(SoluzioneMapper.class);
+		ret = mapper.find(id);
 
 		SqlMapFactory.instance().closeSession();
 
@@ -56,12 +61,12 @@ public class SoluzioneCRUD {
 
 		SqlMapFactory.instance().openSession();
 
-		SoluzioneMapper mapper = SqlMapFactory.instance().getMapper(SoluzioneMapper.class);
-		List<Soluzione> ret = mapper.findAll();
+		mapper = SqlMapFactory.instance().getMapper(SoluzioneMapper.class);
+		list = mapper.findAll();
 
 		SqlMapFactory.instance().closeSession();
 
-		return ret;
+		return list;
 
 	}
 

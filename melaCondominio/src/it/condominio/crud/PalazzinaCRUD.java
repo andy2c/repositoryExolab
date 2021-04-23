@@ -1,5 +1,6 @@
 package it.condominio.crud;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import it.condominio.mapper.PalazzinaMapper;
@@ -7,11 +8,15 @@ import it.condominio.model.Palazzina;
 import it.condominio.util.SqlMapFactory;
 
 public class PalazzinaCRUD {
+	private PalazzinaMapper mapper;
+	private Palazzina ret = new Palazzina();
+	private List<Palazzina> list = new ArrayList<Palazzina>();
+
 	public void insert(Palazzina model) {
 
 		SqlMapFactory.instance().openSession();
 
-		PalazzinaMapper mapper = SqlMapFactory.instance().getMapper(PalazzinaMapper.class);
+		mapper = SqlMapFactory.instance().getMapper(PalazzinaMapper.class);
 
 		mapper.insert(model);
 		SqlMapFactory.instance().commitSession();
@@ -23,7 +28,7 @@ public class PalazzinaCRUD {
 
 		SqlMapFactory.instance().openSession();
 
-		PalazzinaMapper mapper = SqlMapFactory.instance().getMapper(PalazzinaMapper.class);
+		mapper = SqlMapFactory.instance().getMapper(PalazzinaMapper.class);
 
 		mapper.update(model);
 		SqlMapFactory.instance().commitSession();
@@ -33,7 +38,7 @@ public class PalazzinaCRUD {
 	public void delete(int id) {
 		SqlMapFactory.instance().openSession();
 
-		PalazzinaMapper mapper = SqlMapFactory.instance().getMapper(PalazzinaMapper.class);
+		mapper = SqlMapFactory.instance().getMapper(PalazzinaMapper.class);
 
 		mapper.delete(id);
 		SqlMapFactory.instance().commitSession();
@@ -43,8 +48,8 @@ public class PalazzinaCRUD {
 	public Palazzina find(int id) {
 		SqlMapFactory.instance().openSession();
 
-		PalazzinaMapper mapper = SqlMapFactory.instance().getMapper(PalazzinaMapper.class);
-		Palazzina ret = mapper.find(id);
+		mapper = SqlMapFactory.instance().getMapper(PalazzinaMapper.class);
+		ret = mapper.find(id);
 
 		SqlMapFactory.instance().closeSession();
 
@@ -56,12 +61,12 @@ public class PalazzinaCRUD {
 
 		SqlMapFactory.instance().openSession();
 
-		PalazzinaMapper mapper = SqlMapFactory.instance().getMapper(PalazzinaMapper.class);
-		List<Palazzina> ret = mapper.findAll();
+		mapper = SqlMapFactory.instance().getMapper(PalazzinaMapper.class);
+		list = mapper.findAll();
 
 		SqlMapFactory.instance().closeSession();
 
-		return ret;
+		return list;
 
 	}
 

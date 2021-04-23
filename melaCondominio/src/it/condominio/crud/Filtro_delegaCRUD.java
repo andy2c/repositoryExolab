@@ -1,5 +1,6 @@
 package it.condominio.crud;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import it.condominio.mapper.Filtro_delegaMapper;
@@ -7,11 +8,15 @@ import it.condominio.model.Filtro_delega;
 import it.condominio.util.SqlMapFactory;
 
 public class Filtro_delegaCRUD {
+	private Filtro_delegaMapper mapper;
+	private Filtro_delega ret = new Filtro_delega();
+	private List<Filtro_delega> list = new ArrayList<Filtro_delega>();
+
 	public void insert(Filtro_delega model) {
 
 		SqlMapFactory.instance().openSession();
 
-		Filtro_delegaMapper mapper = SqlMapFactory.instance().getMapper(Filtro_delegaMapper.class);
+		mapper = SqlMapFactory.instance().getMapper(Filtro_delegaMapper.class);
 
 		mapper.insert(model);
 		SqlMapFactory.instance().commitSession();
@@ -23,7 +28,7 @@ public class Filtro_delegaCRUD {
 
 		SqlMapFactory.instance().openSession();
 
-		Filtro_delegaMapper mapper = SqlMapFactory.instance().getMapper(Filtro_delegaMapper.class);
+		mapper = SqlMapFactory.instance().getMapper(Filtro_delegaMapper.class);
 
 		mapper.update(model);
 		SqlMapFactory.instance().commitSession();
@@ -33,7 +38,7 @@ public class Filtro_delegaCRUD {
 	public void delete(int id) {
 		SqlMapFactory.instance().openSession();
 
-		Filtro_delegaMapper mapper = SqlMapFactory.instance().getMapper(Filtro_delegaMapper.class);
+		mapper = SqlMapFactory.instance().getMapper(Filtro_delegaMapper.class);
 
 		mapper.delete(id);
 		SqlMapFactory.instance().commitSession();
@@ -43,8 +48,8 @@ public class Filtro_delegaCRUD {
 	public Filtro_delega find(int id) {
 		SqlMapFactory.instance().openSession();
 
-		Filtro_delegaMapper mapper = SqlMapFactory.instance().getMapper(Filtro_delegaMapper.class);
-		Filtro_delega ret = mapper.find(id);
+		mapper = SqlMapFactory.instance().getMapper(Filtro_delegaMapper.class);
+		ret = mapper.find(id);
 
 		SqlMapFactory.instance().closeSession();
 
@@ -56,12 +61,12 @@ public class Filtro_delegaCRUD {
 
 		SqlMapFactory.instance().openSession();
 
-		Filtro_delegaMapper mapper = SqlMapFactory.instance().getMapper(Filtro_delegaMapper.class);
-		List<Filtro_delega> ret = mapper.findAll();
+		mapper = SqlMapFactory.instance().getMapper(Filtro_delegaMapper.class);
+		list = mapper.findAll();
 
 		SqlMapFactory.instance().closeSession();
 
-		return ret;
+		return list;
 
 	}
 

@@ -1,19 +1,24 @@
 package it.condominio.crud;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import it.condominio.exception.EntityNotFoundError;
 import it.condominio.mapper.UtenteMapper;
 import it.condominio.model.Utente;
+import it.condominio.util.BaseUtil;
 import it.condominio.util.SqlMapFactory;
 
+public class UtenteCRUD extends BaseUtil {
+	private UtenteMapper mapper;
+	private Utente ret = new Utente();
+	private List<Utente> list = new ArrayList<Utente>();
 
-public class UtenteCRUD {
 	public void insert(Utente model) {
 
 		SqlMapFactory.instance().openSession();
 
-		UtenteMapper mapper = SqlMapFactory.instance().getMapper(UtenteMapper.class);
+		mapper = SqlMapFactory.instance().getMapper(UtenteMapper.class);
 
 		mapper.insert(model);
 		SqlMapFactory.instance().commitSession();
@@ -25,7 +30,7 @@ public class UtenteCRUD {
 
 		SqlMapFactory.instance().openSession();
 
-		UtenteMapper mapper = SqlMapFactory.instance().getMapper(UtenteMapper.class);
+		mapper = SqlMapFactory.instance().getMapper(UtenteMapper.class);
 
 		mapper.update(model);
 		SqlMapFactory.instance().commitSession();
@@ -35,7 +40,7 @@ public class UtenteCRUD {
 	public void delete(int id) {
 		SqlMapFactory.instance().openSession();
 
-		UtenteMapper mapper = SqlMapFactory.instance().getMapper(UtenteMapper.class);
+		mapper = SqlMapFactory.instance().getMapper(UtenteMapper.class);
 
 		mapper.delete(id);
 		SqlMapFactory.instance().commitSession();
@@ -45,8 +50,8 @@ public class UtenteCRUD {
 	public Utente find(int id) {
 		SqlMapFactory.instance().openSession();
 
-		UtenteMapper mapper = SqlMapFactory.instance().getMapper(UtenteMapper.class);
-		Utente ret = mapper.find(id);
+		mapper = SqlMapFactory.instance().getMapper(UtenteMapper.class);
+		ret = mapper.find(id);
 
 		SqlMapFactory.instance().closeSession();
 
@@ -58,67 +63,65 @@ public class UtenteCRUD {
 
 		SqlMapFactory.instance().openSession();
 
-		UtenteMapper mapper = SqlMapFactory.instance().getMapper(UtenteMapper.class);
-		List<Utente> ret = mapper.findAll();
+		mapper = SqlMapFactory.instance().getMapper(UtenteMapper.class);
+		list = mapper.findAll();
 
 		SqlMapFactory.instance().closeSession();
 
-		return ret;
+		return list;
 
 	}
-	
+
 	public Utente findByEmailAndPassword(Utente model) throws EntityNotFoundError {
 		SqlMapFactory.instance().openSession();
 
-		UtenteMapper mapper = SqlMapFactory.instance().getMapper(UtenteMapper.class);
-		Utente ret = mapper.findByEmailAndPassword(model);
+		mapper = SqlMapFactory.instance().getMapper(UtenteMapper.class);
+		ret = mapper.findByEmailAndPassword(model);
 
 		SqlMapFactory.instance().closeSession();
-		if(ret==null) {
+		if (ret == null) {
 			throw new EntityNotFoundError();
 		}
-		
+
 		return ret;
 
 	}
-	
-	
+
 	public void updatePassword(Utente model) {
 		SqlMapFactory.instance().openSession();
 
-		UtenteMapper mapper = SqlMapFactory.instance().getMapper(UtenteMapper.class);
+		mapper = SqlMapFactory.instance().getMapper(UtenteMapper.class);
 
 		mapper.updatePassword(model);
 		SqlMapFactory.instance().commitSession();
 		SqlMapFactory.instance().closeSession();
-		
+
 	}
-	
+
 	public List<Utente> findRappresentantiAttivi() {
 
 		SqlMapFactory.instance().openSession();
 
-		UtenteMapper mapper = SqlMapFactory.instance().getMapper(UtenteMapper.class);
-		List<Utente> ret = mapper.findRappresentantiAttivi();
+		mapper = SqlMapFactory.instance().getMapper(UtenteMapper.class);
+		list = mapper.findRappresentantiAttivi();
 
 		SqlMapFactory.instance().closeSession();
 
-		return ret;
+		return list;
 
 	}
+
 	public List<Utente> findProprietarioAttivo() {
 
 		SqlMapFactory.instance().openSession();
 
-		UtenteMapper mapper = SqlMapFactory.instance().getMapper(UtenteMapper.class);
-		List<Utente> ret = mapper.findProprietarioAttivo();
+		mapper = SqlMapFactory.instance().getMapper(UtenteMapper.class);
+		list = mapper.findProprietarioAttivo();
 
 		SqlMapFactory.instance().closeSession();
 
-		return ret;
+		return list;
 
 	}
-	
-	
-	
+
 }

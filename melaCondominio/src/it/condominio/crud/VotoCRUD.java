@@ -1,5 +1,6 @@
 package it.condominio.crud;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import it.condominio.mapper.VotoMapper;
@@ -9,20 +10,20 @@ import it.condominio.model.Voto;
 import it.condominio.util.SqlMapFactory;
 
 public class VotoCRUD {
-	Soluzione soluzione = new Soluzione();
-	SoluzioneCRUD soluzione_crud = new SoluzioneCRUD();
-	Presenza_riunione presenza_riunione = new Presenza_riunione();
-	Presenza_riunioneCRUD presenza_riunione_crud = new Presenza_riunioneCRUD();
-	
-	
-	
-	
-	
+	private Soluzione soluzione = new Soluzione();
+	private SoluzioneCRUD soluzione_crud = new SoluzioneCRUD();
+	private Presenza_riunione presenza_riunione = new Presenza_riunione();
+	private Presenza_riunioneCRUD presenza_riunione_crud = new Presenza_riunioneCRUD();
+
+	private VotoMapper mapper;
+	private Voto ret = new Voto();
+	private List<Voto> list = new ArrayList<Voto>();
+
 	public void insert(Voto model) {
 
 		SqlMapFactory.instance().openSession();
 
-		VotoMapper mapper = SqlMapFactory.instance().getMapper(VotoMapper.class);
+		mapper = SqlMapFactory.instance().getMapper(VotoMapper.class);
 
 		mapper.insert(model);
 		SqlMapFactory.instance().commitSession();
@@ -34,7 +35,7 @@ public class VotoCRUD {
 
 		SqlMapFactory.instance().openSession();
 
-		VotoMapper mapper = SqlMapFactory.instance().getMapper(VotoMapper.class);
+		mapper = SqlMapFactory.instance().getMapper(VotoMapper.class);
 
 		mapper.update(model);
 		SqlMapFactory.instance().commitSession();
@@ -44,36 +45,36 @@ public class VotoCRUD {
 	public void delete(int id) {
 		SqlMapFactory.instance().openSession();
 
-		VotoMapper mapper = SqlMapFactory.instance().getMapper(VotoMapper.class);
+		mapper = SqlMapFactory.instance().getMapper(VotoMapper.class);
 
 		mapper.delete(id);
 		SqlMapFactory.instance().commitSession();
 		SqlMapFactory.instance().closeSession();
 	}
 
-	
 	public List<Voto> findAll() {
 
 		SqlMapFactory.instance().openSession();
 
-		VotoMapper mapper = SqlMapFactory.instance().getMapper(VotoMapper.class);
-		List<Voto> ret = mapper.findAll();
+		mapper = SqlMapFactory.instance().getMapper(VotoMapper.class);
+		list = mapper.findAll();
 
 		SqlMapFactory.instance().closeSession();
 
-		return ret;
+		return list;
 
 	}
+
 	public Voto find(int id) {
 		SqlMapFactory.instance().openSession();
 
-		VotoMapper mapper = SqlMapFactory.instance().getMapper(VotoMapper.class);
-		Voto ret = mapper.find(id);
+		mapper = SqlMapFactory.instance().getMapper(VotoMapper.class);
+		ret = mapper.find(id);
 		SqlMapFactory.instance().closeSession();
-		
+
 		soluzione = soluzione_crud.find(ret.getId_soluzione());
 		ret.setSoluzione(soluzione);
-		
+
 		presenza_riunione = presenza_riunione_crud.find(ret.getId_presenza_riunione());
 		ret.setPresenza_riunione(presenza_riunione);
 		return ret;

@@ -1,19 +1,21 @@
 package it.condominio.crud;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import it.condominio.mapper.AppartamentoMapper;
 import it.condominio.model.Appartamento;
 import it.condominio.util.SqlMapFactory;
 
-
 public class AppartamentoCRUD {
-	
+	private AppartamentoMapper mapper;
+	private Appartamento ret = new Appartamento();
+	private List<Appartamento> list = new ArrayList<Appartamento>();
 	public void insert(Appartamento model) {
 
 		SqlMapFactory.instance().openSession();
 
-		AppartamentoMapper mapper = SqlMapFactory.instance().getMapper(AppartamentoMapper.class);
+		mapper = SqlMapFactory.instance().getMapper(AppartamentoMapper.class);
 
 		mapper.insert(model);
 		SqlMapFactory.instance().commitSession();
@@ -25,7 +27,7 @@ public class AppartamentoCRUD {
 
 		SqlMapFactory.instance().openSession();
 
-		AppartamentoMapper mapper = SqlMapFactory.instance().getMapper(AppartamentoMapper.class);
+		mapper = SqlMapFactory.instance().getMapper(AppartamentoMapper.class);
 
 		mapper.update(model);
 		SqlMapFactory.instance().commitSession();
@@ -35,7 +37,7 @@ public class AppartamentoCRUD {
 	public void delete(int id) {
 		SqlMapFactory.instance().openSession();
 
-		AppartamentoMapper mapper = SqlMapFactory.instance().getMapper(AppartamentoMapper.class);
+		mapper = SqlMapFactory.instance().getMapper(AppartamentoMapper.class);
 
 		mapper.delete(id);
 		SqlMapFactory.instance().commitSession();
@@ -45,8 +47,8 @@ public class AppartamentoCRUD {
 	public Appartamento find(int id) {
 		SqlMapFactory.instance().openSession();
 
-		AppartamentoMapper mapper = SqlMapFactory.instance().getMapper(AppartamentoMapper.class);
-		Appartamento ret = mapper.find(id);
+		mapper = SqlMapFactory.instance().getMapper(AppartamentoMapper.class);
+		ret = mapper.find(id);
 
 		SqlMapFactory.instance().closeSession();
 
@@ -58,24 +60,13 @@ public class AppartamentoCRUD {
 
 		SqlMapFactory.instance().openSession();
 
-		AppartamentoMapper mapper = SqlMapFactory.instance().getMapper(AppartamentoMapper.class);
-		List<Appartamento> ret = mapper.findAll();
+		mapper = SqlMapFactory.instance().getMapper(AppartamentoMapper.class);
+		list = mapper.findAll();
 
 		SqlMapFactory.instance().closeSession();
 
-		return ret;
+		return list;
 
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

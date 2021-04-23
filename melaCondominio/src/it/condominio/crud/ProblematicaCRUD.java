@@ -1,5 +1,6 @@
 package it.condominio.crud;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import it.condominio.mapper.ProblematicaMapper;
@@ -7,11 +8,15 @@ import it.condominio.model.Problematica;
 import it.condominio.util.SqlMapFactory;
 
 public class ProblematicaCRUD {
+	private ProblematicaMapper mapper;
+	private Problematica ret = new Problematica();
+	private List<Problematica> list = new ArrayList<Problematica>();
+
 	public void insert(Problematica model) {
 
 		SqlMapFactory.instance().openSession();
 
-		ProblematicaMapper mapper = SqlMapFactory.instance().getMapper(ProblematicaMapper.class);
+		mapper = SqlMapFactory.instance().getMapper(ProblematicaMapper.class);
 
 		mapper.insert(model);
 		SqlMapFactory.instance().commitSession();
@@ -23,7 +28,7 @@ public class ProblematicaCRUD {
 
 		SqlMapFactory.instance().openSession();
 
-		ProblematicaMapper mapper = SqlMapFactory.instance().getMapper(ProblematicaMapper.class);
+		mapper = SqlMapFactory.instance().getMapper(ProblematicaMapper.class);
 
 		mapper.update(model);
 		SqlMapFactory.instance().commitSession();
@@ -33,7 +38,7 @@ public class ProblematicaCRUD {
 	public void delete(int id) {
 		SqlMapFactory.instance().openSession();
 
-		ProblematicaMapper mapper = SqlMapFactory.instance().getMapper(ProblematicaMapper.class);
+		mapper = SqlMapFactory.instance().getMapper(ProblematicaMapper.class);
 
 		mapper.delete(id);
 		SqlMapFactory.instance().commitSession();
@@ -43,8 +48,8 @@ public class ProblematicaCRUD {
 	public Problematica find(int id) {
 		SqlMapFactory.instance().openSession();
 
-		ProblematicaMapper mapper = SqlMapFactory.instance().getMapper(ProblematicaMapper.class);
-		Problematica ret = mapper.find(id);
+		mapper = SqlMapFactory.instance().getMapper(ProblematicaMapper.class);
+		ret = mapper.find(id);
 
 		SqlMapFactory.instance().closeSession();
 
@@ -56,12 +61,12 @@ public class ProblematicaCRUD {
 
 		SqlMapFactory.instance().openSession();
 
-		ProblematicaMapper mapper = SqlMapFactory.instance().getMapper(ProblematicaMapper.class);
-		List<Problematica> ret = mapper.findAll();
+		mapper = SqlMapFactory.instance().getMapper(ProblematicaMapper.class);
+		list = mapper.findAll();
 
 		SqlMapFactory.instance().closeSession();
 
-		return ret;
+		return list;
 
 	}
 

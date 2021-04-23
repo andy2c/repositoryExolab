@@ -1,5 +1,6 @@
 package it.condominio.crud;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import it.condominio.mapper.Ruoli_delegaMapper;
@@ -7,11 +8,15 @@ import it.condominio.model.Ruoli_delega;
 import it.condominio.util.SqlMapFactory;
 
 public class Ruoli_delegaCRUD {
+	private Ruoli_delegaMapper mapper;
+	private Ruoli_delega ret = new Ruoli_delega();
+	private List<Ruoli_delega> list = new ArrayList<Ruoli_delega>();
+
 	public void insert(Ruoli_delega model) {
 
 		SqlMapFactory.instance().openSession();
 
-		Ruoli_delegaMapper mapper = SqlMapFactory.instance().getMapper(Ruoli_delegaMapper.class);
+		mapper = SqlMapFactory.instance().getMapper(Ruoli_delegaMapper.class);
 
 		mapper.insert(model);
 		SqlMapFactory.instance().commitSession();
@@ -23,7 +28,7 @@ public class Ruoli_delegaCRUD {
 
 		SqlMapFactory.instance().openSession();
 
-		Ruoli_delegaMapper mapper = SqlMapFactory.instance().getMapper(Ruoli_delegaMapper.class);
+		mapper = SqlMapFactory.instance().getMapper(Ruoli_delegaMapper.class);
 
 		mapper.update(model);
 		SqlMapFactory.instance().commitSession();
@@ -33,7 +38,7 @@ public class Ruoli_delegaCRUD {
 	public void delete(int id) {
 		SqlMapFactory.instance().openSession();
 
-		Ruoli_delegaMapper mapper = SqlMapFactory.instance().getMapper(Ruoli_delegaMapper.class);
+		mapper = SqlMapFactory.instance().getMapper(Ruoli_delegaMapper.class);
 
 		mapper.delete(id);
 		SqlMapFactory.instance().commitSession();
@@ -43,8 +48,8 @@ public class Ruoli_delegaCRUD {
 	public Ruoli_delega find(int id) {
 		SqlMapFactory.instance().openSession();
 
-		Ruoli_delegaMapper mapper = SqlMapFactory.instance().getMapper(Ruoli_delegaMapper.class);
-		Ruoli_delega ret = mapper.find(id);
+		mapper = SqlMapFactory.instance().getMapper(Ruoli_delegaMapper.class);
+		ret = mapper.find(id);
 
 		SqlMapFactory.instance().closeSession();
 
@@ -56,12 +61,12 @@ public class Ruoli_delegaCRUD {
 
 		SqlMapFactory.instance().openSession();
 
-		Ruoli_delegaMapper mapper = SqlMapFactory.instance().getMapper(Ruoli_delegaMapper.class);
-		List<Ruoli_delega> ret = mapper.findAll();
+		mapper = SqlMapFactory.instance().getMapper(Ruoli_delegaMapper.class);
+		list = mapper.findAll();
 
 		SqlMapFactory.instance().closeSession();
 
-		return ret;
+		return list;
 
 	}
 
