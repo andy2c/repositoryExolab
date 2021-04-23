@@ -5,5 +5,5 @@
 	
 	<a href="#">elenco riunioni</a>
 	<br><br>
-
+ 
 <jsp:include page="templates/footer.jsp"></jsp:include>

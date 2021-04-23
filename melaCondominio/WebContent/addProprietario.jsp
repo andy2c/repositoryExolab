@@ -6,7 +6,7 @@
 	<input type="hidden" name="action" vaue="signIn" />
 	<input type="hidden" name="proprietario" vaue="true" />
 	<input type="hidden" name="rappresentante" vaue="true" />
-	
+	 
 	<label for="nome">nome </label>
 	<input type="text" name="nome" id="nome" value="${user.nome }" required/>
 	<br><br>

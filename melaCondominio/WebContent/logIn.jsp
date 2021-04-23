@@ -12,7 +12,7 @@
 	<c:if test="${err!=null }">
 	
 		<c:out value="${err }" />
-	
+	 
 	</c:if>
 
 	<c:if test="${user==null }">

@@ -7,7 +7,7 @@
 session.invalidate();
 //response.sendRedirect("index.jsp");
 %>
-
+ 
 <p>log out eseguita con successo</p>
 
 <jsp:include page="templates/footer.jsp"></jsp:include>

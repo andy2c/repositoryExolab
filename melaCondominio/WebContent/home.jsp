@@ -4,5 +4,5 @@
 <jsp:include page="templates/header.jsp"></jsp:include>
 
 <p>home</p>
-
+ 
 <jsp:include page="templates/footer.jsp"></jsp:include>
