@@ -14,4 +14,6 @@ public interface StatoMapper {
 	public Stato find(int id);
 
 	public List<Stato> findAll();
+	
+	public Stato  findForInsert(Stato stato);  // fatto
 }

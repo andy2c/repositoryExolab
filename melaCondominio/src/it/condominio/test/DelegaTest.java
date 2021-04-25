@@ -25,9 +25,10 @@ public class DelegaTest {
 //		for(Delega d : list)
 //			System.out.println(d.toString());
 //		
+////		
+//		Delega canc = null;
 //		
-		
-		
+//		System.out.println(canc.getPercorso_delega());
 		
 		
 		

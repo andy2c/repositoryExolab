@@ -111,10 +111,12 @@
 
 
 
-<!-- <select parameterType="int" id="find" -->
-<!-- 		resultType="it.condominio.model.Riunione"> -->
-<!-- 		select * from riunione where id = #{id}; -->
-<!-- 	</select> -->
+<select parameterType="Riunione" id="findForInsert"
+		resultType="Riunione">
+		SELECT  * FROM riunione r 
+        WHERE r.data_riunione=#{data_riunione};
+		
+	</select>
 
 
 </mapper>

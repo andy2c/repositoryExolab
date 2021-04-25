@@ -21,6 +21,10 @@
 
 
 
+<select parameterType="Voto" id="findForInsert"
+		resultType="Voto">
+		select * from voto where id_presenza_riunione = #{id_presenza_riunione}  and id_soluzione = #{id_soluzione};
+	</select>
 
 
 

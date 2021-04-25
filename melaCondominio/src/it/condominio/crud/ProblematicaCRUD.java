@@ -4,17 +4,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.condominio.exception.EntityNotFoundError;
+import it.condominio.exception.MaxLengthError;
+import it.condominio.exception.MinLengthError;
+import it.condominio.exception.RequiredFieldError;
 import it.condominio.mapper.ProblematicaMapper;
 import it.condominio.model.Problematica;
 import it.condominio.util.SqlMapFactory;
+import it.condominio.util.Validator;
 
 public class ProblematicaCRUD {
 	private ProblematicaMapper mapper;
 	private Problematica ret = null;
 	private List<Problematica> list = new ArrayList<Problematica>();
-
-	public void insert(Problematica model) {
-
+    private Validator validator = new Validator();
+    private void validateInsertOrUpdate(Problematica model) throws RequiredFieldError, MaxLengthError, MinLengthError {
+    	validator.required("descrizione problematica", model.getDescrizione_problematica());
+    	validator.maxLength("descrizione problematica", model.getDescrizione_problematica(), 500);
+    	validator.minLength("descrizione problematica", model.getDescrizione_problematica(), 10);
+    }
+    private void validateInsert(Problematica model) throws RequiredFieldError, MaxLengthError, MinLengthError {
+    	validateInsertOrUpdate(model);
+    }
+    private void validateUpdate(Problematica model) throws RequiredFieldError, MaxLengthError, MinLengthError{
+    	validateInsertOrUpdate(model);
+    }
+    
+	public void insert(Problematica model) throws RequiredFieldError, MaxLengthError, MinLengthError {
+		validateInsert(model);
 		SqlMapFactory.instance().openSession();
 
 		mapper = SqlMapFactory.instance().getMapper(ProblematicaMapper.class);
@@ -25,8 +41,8 @@ public class ProblematicaCRUD {
 
 	}
 
-	public void update(Problematica model) {
-
+	public void update(Problematica model) throws RequiredFieldError, MaxLengthError, MinLengthError {
+		validateUpdate(model);
 		SqlMapFactory.instance().openSession();
 
 		mapper = SqlMapFactory.instance().getMapper(ProblematicaMapper.class);

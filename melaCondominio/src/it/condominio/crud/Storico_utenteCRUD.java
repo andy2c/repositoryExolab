@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.condominio.exception.EntityNotFoundError;
+import it.condominio.exception.RequiredFieldError;
+import it.condominio.exception.UniqueFieldError;
 import it.condominio.mapper.Storico_utenteMapper;
 import it.condominio.model.Appartamento;
 import it.condominio.model.Ruolo;
@@ -11,6 +13,7 @@ import it.condominio.model.Stato;
 import it.condominio.model.Storico_utente;
 import it.condominio.model.Utente;
 import it.condominio.util.SqlMapFactory;
+import it.condominio.util.Validator;
 
 public class Storico_utenteCRUD {
 	private Storico_utenteMapper mapper;
@@ -24,9 +27,27 @@ public class Storico_utenteCRUD {
 	private AppartamentoCRUD appartamento_crud = new AppartamentoCRUD();
 	private Stato stato = new Stato();
 	private StatoCRUD stato_crud = new StatoCRUD();
+	private Validator validator = new Validator();
 
-	public void insert(Storico_utente model) {
+	private void validateInsertOrUpdate(Storico_utente model) throws RequiredFieldError {
+		validator.required("data inizio", model.getData_inizio());
 
+	}
+
+	private void validateInsert(Storico_utente model) throws UniqueFieldError, RequiredFieldError {
+		validateInsertOrUpdate(model);
+		ret = findForInsert(model);
+		if (ret != null)
+			throw new UniqueFieldError("data inizio e id utente");
+
+	}
+
+	private void validateUpdate(Storico_utente model) throws RequiredFieldError {
+		validateInsertOrUpdate(model);
+	}
+
+	public void insert(Storico_utente model) throws UniqueFieldError, RequiredFieldError {
+		validateInsert(model);
 		SqlMapFactory.instance().openSession();
 
 		mapper = SqlMapFactory.instance().getMapper(Storico_utenteMapper.class);
@@ -37,8 +58,8 @@ public class Storico_utenteCRUD {
 
 	}
 
-	public void update(Storico_utente model) {
-
+	public void update(Storico_utente model) throws RequiredFieldError {
+		validateUpdate(model);
 		SqlMapFactory.instance().openSession();
 
 		mapper = SqlMapFactory.instance().getMapper(Storico_utenteMapper.class);
@@ -102,6 +123,18 @@ public class Storico_utenteCRUD {
 		}
 
 		return list;
+
+	}
+
+	public Storico_utente findForInsert(Storico_utente model) {
+		SqlMapFactory.instance().openSession();
+
+		mapper = SqlMapFactory.instance().getMapper(Storico_utenteMapper.class);
+		ret = mapper.findForInsert(model);
+
+		SqlMapFactory.instance().closeSession();
+
+		return ret;
 
 	}
 

@@ -14,4 +14,6 @@ public interface SoluzioneMapper {
 	public Soluzione find(int id);  // fatto
 
 	public List<Soluzione> findAll();  // fatto
+	
+	public Soluzione  findForInsert(Soluzione soluzione);  // fatto
 }

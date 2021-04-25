@@ -14,4 +14,6 @@ public interface Tipo_problematicaMapper {
 	public Tipo_problematica find(int id);
 
 	public List<Tipo_problematica> findAll();
+	
+	public Tipo_problematica  findForInsert(Tipo_problematica tipo_problematica);  // fatto
 }

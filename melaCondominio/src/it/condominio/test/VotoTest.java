@@ -11,7 +11,7 @@ public class VotoTest {
 	    Voto model = new Voto(1, 1, 1);
 	    
 //		crud.insert(model);
-		
+//		
 //		test = crud.find(1);
 //		System.out.println(test.toString());
 		

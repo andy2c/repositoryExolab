@@ -95,7 +95,10 @@ tp.id tipo_problematica_id , tp.nome tipo_problematica_nome , stat.id stato_prob
 	 </select>
  
 
-
+<select parameterType="Soluzione" id="findForInsert"
+		resultType="Soluzione">
+		select * from soluzione where nome = #{nome} and descrizione = #{descrizione};
+	</select>
 
 
 

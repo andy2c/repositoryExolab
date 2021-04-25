@@ -3,7 +3,25 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-
+    <typeAliases >  
+      <typeAlias type="it.condominio.model.Appartamento" alias="Appartamento"/>
+      <typeAlias type="it.condominio.model.Delega" alias="Delega" />
+      <typeAlias type="it.condominio.model.Filtro_delega" alias="Filtro_delega" />
+      <typeAlias type="it.condominio.model.Filtro_riunione" alias="Filtro_riunione"/>
+      <typeAlias type="it.condominio.model.Palazzina" alias="Palazzina"/>
+      <typeAlias type="it.condominio.model.Presenza_riunione" alias="Presenza_riunione"/>
+      <typeAlias type="it.condominio.model.Preventivo" alias="Preventivo"/>
+      <typeAlias type="it.condominio.model.Problematica" alias="Problematica"/>
+      <typeAlias type="it.condominio.model.Riunione" alias="Riunione"/>
+      <typeAlias type="it.condominio.model.Ruoli_delega" alias="Ruoli_delega"/>
+      <typeAlias type="it.condominio.model.Ruolo" alias="Ruolo" />
+      <typeAlias type="it.condominio.model.Soluzione" alias="Soluzione"/>
+      <typeAlias type="it.condominio.model.Stato" alias="Stato" />
+      <typeAlias type="it.condominio.model.Storico_utente" alias="Storico_utente" />
+      <typeAlias type="it.condominio.model.Tipo_problematica" alias="Tipo_problematica" />
+      <typeAlias type="it.condominio.model.Utente" alias="Utente" />
+      <typeAlias type="it.condominio.model.Voto" alias="Voto" />       
+    </typeAliases>
    
 		
 	<environments default = "development">
@@ -13,6 +31,7 @@
 	         <property name = "driver" value = "com.mysql.jdbc.Driver"/>
 	         <property name = "url" value = "jdbc:mysql://localhost:3306/exolabmela_progettocondominio?allowPublicKeyRetrieval=true&amp;useSSL=false"/>
 	         <!-- my batis nella istruzione di sopra non supporta &  , bisogna mettere &amp;   -->
+	         <!-- ?allowPublicKeyRetrieval=true&amp;useSSL=false   -->
 	         <property name = "username" value = "root"/>
 	         <property name = "password" value = "root"/>
 	      </dataSource>            
@@ -22,23 +41,23 @@
 	
    <mappers>
       
-<!--       <mapper resource = "appartamento.xml" /> -->
-<!--       <mapper resource = "delega.xml" />  -->
-<!--       <mapper resource = "filtro_delega.xml" /> -->
-<!--       <mapper resource = "filtro_riunione.xml" /> -->
-<!--       <mapper resource = "palazzina.xml" /> -->
-<!--       <mapper resource = "presenza_riunione.xml" /> -->
-<!--       <mapper resource = "preventivo.xml" /> -->
-<!--       <mapper resource = "problematica.xml" /> -->
-<!--       <mapper resource = "riunione.xml" /> -->
-<!--       <mapper resource = "ruoli_delega.xml" /> -->
-<!--       <mapper resource = "ruolo.xml" /> -->
-<!--       <mapper resource = "soluzione.xml" /> -->
-<!--       <mapper resource = "stato.xml" /> -->
-<!--       <mapper resource = "storico_utente.xml" /> -->
-<!--       <mapper resource = "tipo_problematica.xml" /> -->
+      <mapper resource = "appartamento.xml" />
+      <mapper resource = "delega.xml" /> 
+      <mapper resource = "filtro_delega.xml" />
+      <mapper resource = "filtro_riunione.xml" />
+      <mapper resource = "palazzina.xml" />
+      <mapper resource = "presenza_riunione.xml" />
+      <mapper resource = "preventivo.xml" />
+      <mapper resource = "problematica.xml" />
+      <mapper resource = "riunione.xml" />
+      <mapper resource = "ruoli_delega.xml" />
+      <mapper resource = "ruolo.xml" />
+      <mapper resource = "soluzione.xml" />
+      <mapper resource = "stato.xml" />
+      <mapper resource = "storico_utente.xml" />
+      <mapper resource = "tipo_problematica.xml" />
       <mapper resource = "utente.xml" />
-<!--       <mapper resource = "voto.xml" /> -->
+      <mapper resource = "voto.xml" />
 
    </mappers>
    

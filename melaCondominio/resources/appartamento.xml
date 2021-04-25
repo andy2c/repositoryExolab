@@ -31,7 +31,11 @@
         WHERE a.id = #{id};
 	</select>
 
+<select id="findAll" resultMap="appartamentoWithPalazzina">
+	SELECT a.*, p.id idP , p.nome,p.via,p.citta,p.regione  FROM appartamento a INNER JOIN palazzina p ON a.id_palazzina=p.id 
 
+     
+	</select>
 
 
 
@@ -50,21 +54,22 @@
 
 
 	
-
-
-
-
-
-
-
-
-
-
-
-	<select id="findAll" resultMap="appartamentoWithPalazzina">
-	SELECT a.*, p.id idP , p.nome,p.via,p.citta,p.regione  FROM appartamento a INNER JOIN palazzina p ON a.id_palazzina=p.id 
-     
+<select parameterType="Appartamento" id="findForInsert" 
+		resultType="Appartamento" >
+		SELECT * FROM appartamento a 
+        WHERE a.interno = #{interno} and a.id_palazzina= #{id_palazzina};
 	</select>
+
+
+
+
+
+
+
+
+
+
+	
  
 
 

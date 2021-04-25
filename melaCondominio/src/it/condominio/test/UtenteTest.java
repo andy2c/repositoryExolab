@@ -5,8 +5,9 @@ import java.util.List;
 import it.condominio.crud.UtenteCRUD;
 import it.condominio.exception.EntityNotFoundError;
 import it.condominio.model.Utente;
+import it.condominio.util.BaseUtil;
 
-public class UtenteTest {
+public class UtenteTest extends BaseUtil {
 
 	public static void main(String[] args) {
 		UtenteCRUD crud = new UtenteCRUD();
@@ -53,6 +54,14 @@ public class UtenteTest {
 //		for(Utente u : lista)
 //			System.out.println(u.toString());
 		
+//		model = crud.find(4);
+//		if(model != null)
+//			System.out.println(model.toString());
+//		else
+//			System.out.println("Non trovato");
+//		
+//		
+//		System.out.println(utente.toString());
 	}
 
 }

@@ -6,9 +6,6 @@
 <mapper namespace="it.condominio.mapper.RuoloMapper">
 
 
-
-
-
 <insert keyColumn="id" keyProperty="id" useGeneratedKeys="true"
 		parameterType="it.condominio.model.Ruolo" id="insert">
 		insert into ruolo(nome ) values
@@ -29,6 +26,11 @@
 
 	<select id="findAll" resultType="it.condominio.model.Ruolo">select * from ruolo </select>
  
+    <select parameterType="Ruolo" id="findForInsert"
+		resultType="Ruolo">
+		select * from ruolo where nome = #{nome};
+	</select>
+
 
 
 

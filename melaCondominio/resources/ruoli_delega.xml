@@ -6,10 +6,6 @@
 <mapper namespace="it.condominio.mapper.Ruoli_delegaMapper">
 
 
-
-
-
-
 <insert keyColumn="id" keyProperty="id" useGeneratedKeys="true"
 		parameterType="it.condominio.model.Ruoli_delega" id="insert">
 		insert into ruoli_delega(nome ) values
@@ -30,24 +26,8 @@
 
 	<select id="findAll" resultType="it.condominio.model.Ruoli_delega">select * from ruoli_delega </select>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <select parameterType="Ruoli_delega" id="findForInsert"
+		resultType="Ruoli_delega">
+		select * from ruoli_delega where nome = #{nome};
+	</select>
 </mapper>

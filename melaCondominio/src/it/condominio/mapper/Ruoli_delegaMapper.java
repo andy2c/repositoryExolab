@@ -14,4 +14,6 @@ public interface Ruoli_delegaMapper {
 	public Ruoli_delega find(int id); // fatto
 
 	public List<Ruoli_delega> findAll(); // fatto
+	
+	public Ruoli_delega findForInsert(Ruoli_delega ruoli_delega); // fatto
 }

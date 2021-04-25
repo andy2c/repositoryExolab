@@ -14,4 +14,6 @@ public interface Storico_utenteMapper {
 	public Storico_utente find(int id); // fatto
 
 	public List<Storico_utente> findAll(); // fatto
+	
+	public Storico_utente  findForInsert(Storico_utente storico_utente);  // fatto
 }

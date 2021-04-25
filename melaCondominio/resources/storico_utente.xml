@@ -35,7 +35,10 @@
 
 
 
-
+<select parameterType="Storico_utente" id="findForInsert"
+		resultType="Storico_utente">
+		select * from storico_utente where data_inizio = #{data_inizio}   and id_utente = #{id_utente};
+	</select>
 
 
 

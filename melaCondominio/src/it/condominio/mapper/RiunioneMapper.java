@@ -14,4 +14,6 @@ public interface RiunioneMapper {
 	public Riunione find(int id);           // fatto
 
 	public List<Riunione> findAll();        // fatto
+	
+	public Riunione findForInsert(Riunione riunione);           // fatto
 }

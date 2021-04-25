@@ -15,4 +15,7 @@ public interface AppartamentoMapper {
 	public Appartamento find(int id); // fatta  con mappa
 
 	public List<Appartamento> findAll();  // fatta con mappa
+	
+	public Appartamento findForInsert(Appartamento appartamento); // fatto bene
 }
+   

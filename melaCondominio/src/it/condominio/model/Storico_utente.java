@@ -1,7 +1,7 @@
 package it.condominio.model;
 
 import java.time.LocalDate;
-import java.util.Date;
+
 
 public class Storico_utente {
 	private int id;

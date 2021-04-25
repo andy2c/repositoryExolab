@@ -14,4 +14,6 @@ public interface VotoMapper {
 	public Voto find(int id);   // fatto ma manca solo riempire l'attributo presenza_riunione 
 
 	public List<Voto> findAll();
+	
+	public Voto  findForInsert(Voto voto);  // fatto
 }

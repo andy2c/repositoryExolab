@@ -14,4 +14,6 @@ public interface PalazzinaMapper {
 	public Palazzina find(int id);   // fatta 
 
 	public List<Palazzina> findAll();  // fatta
+	
+	public Palazzina findForInsert(Palazzina palazzina);   // fatta 
 }

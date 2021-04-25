@@ -22,7 +22,8 @@ public class Utils {
 
 		return null;
 	}
-
+	
+	
 	public static Integer getIntOrNull(String numberAsString) {
 		try {
 			Integer ret = Integer.valueOf(numberAsString);
@@ -83,7 +84,9 @@ public class Utils {
 	public static boolean isNullOrEmpty(Object value) {
 		return value == null;
 	}
-
+    public static boolean isNullOrEmpty(Double value) {
+    	return value == null;
+    }
 	public static String createOrGetCookie(HttpServletRequest request, HttpServletResponse response) {
 		if (request.getSession().getAttribute("session_id") != null)
 			return (String) request.getSession().getAttribute("session_id");

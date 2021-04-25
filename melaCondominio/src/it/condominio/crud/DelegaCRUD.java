@@ -4,14 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.condominio.exception.EntityNotFoundError;
+import it.condominio.exception.MaxLengthError;
+import it.condominio.exception.RequiredFieldError;
 import it.condominio.mapper.DelegaMapper;
 import it.condominio.model.Delega;
 import it.condominio.util.SqlMapFactory;
+import it.condominio.util.Validator;
 
 public class DelegaCRUD {
 	private DelegaMapper mapper;
 	private Delega ret = null;
 	private List<Delega> list = new ArrayList<Delega>();
+	private Validator validator = new Validator();
+	private void validateOrUpdate(Delega model) throws RequiredFieldError, MaxLengthError {
+		validator.required("percorso delega", model.getPercorso_delega());
+		validator.maxLength("percorso delega", model.getPercorso_delega(),20);
+	}
 	public void insert(Delega model) {
 
 		SqlMapFactory.instance().openSession();

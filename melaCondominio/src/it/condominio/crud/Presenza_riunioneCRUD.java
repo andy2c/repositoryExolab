@@ -58,15 +58,15 @@ public class Presenza_riunioneCRUD {
 		mapper = SqlMapFactory.instance().getMapper(Presenza_riunioneMapper.class);
 		ret = mapper.find(id);
 		SqlMapFactory.instance().closeSession();
-
+		if (ret == null) {
+			throw new EntityNotFoundError();
+		}
 		storico_utente = storico_utente_crud.find(ret.getId_storico_utente());
 		riunione = riunione_crud.find(ret.getId_riunione());
 
 		ret.setStorico_utente(storico_utente);
 		ret.setRiunione(riunione);
-		if (ret == null) {
-			throw new EntityNotFoundError();
-		}
+		
 		return ret;
 
 	}

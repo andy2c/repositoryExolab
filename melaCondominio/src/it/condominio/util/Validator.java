@@ -1,5 +1,7 @@
 package it.condominio.util;
 
+import java.time.LocalDate;
+
 import it.condominio.exception.InvalidEmail;
 import it.condominio.exception.InvalidPassword;
 import it.condominio.exception.MaxLengthError;
@@ -35,10 +37,17 @@ public class Validator {
 			throw new InvalidEmail(field);
 		
 	}
+	public void validatePrezzo(String field, Double value ) throws RequiredFieldError {
+		if(Utils.isNullOrEmpty(value))
+			throw new RequiredFieldError(field);
+	}
 	
 	
-	
-	
+	public void required(String field , LocalDate value) throws RequiredFieldError {
+		if(Utils.isNullOrEmpty(value))
+			throw new RequiredFieldError(field);
+		
+	}
 	
 	
 	

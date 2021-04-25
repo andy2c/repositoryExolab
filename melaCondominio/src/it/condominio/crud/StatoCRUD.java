@@ -4,17 +4,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.condominio.exception.EntityNotFoundError;
+import it.condominio.exception.MaxLengthError;
+import it.condominio.exception.RequiredFieldError;
+import it.condominio.exception.UniqueFieldError;
 import it.condominio.mapper.StatoMapper;
 import it.condominio.model.Stato;
 import it.condominio.util.SqlMapFactory;
+import it.condominio.util.Validator;
 
 public class StatoCRUD {
 	private StatoMapper mapper;
 	private Stato ret = null;
 	private List<Stato> list = new ArrayList<Stato>();
+	private Validator validator = new Validator();
 
-	public void insert(Stato model) {
+	private void validateInsertOrUpdate(Stato model) throws RequiredFieldError, MaxLengthError {
+		validator.required("nome", model.getNome());
+		validator.maxLength("nome", model.getNome(), 20);
+	}
 
+	private void validateInsert(Stato model) throws UniqueFieldError, RequiredFieldError, MaxLengthError {
+		validateInsertOrUpdate(model);
+		ret = findForInsert(model);
+		if (ret != null)
+			throw new UniqueFieldError("nome stato ");
+
+	}
+
+	private void validateUpdate(Stato model) throws RequiredFieldError, MaxLengthError {
+		validateInsertOrUpdate(model);
+	}
+
+	public void insert(Stato model) throws UniqueFieldError, RequiredFieldError, MaxLengthError {
+		validateInsert(model);
 		SqlMapFactory.instance().openSession();
 
 		mapper = SqlMapFactory.instance().getMapper(StatoMapper.class);
@@ -25,8 +47,8 @@ public class StatoCRUD {
 
 	}
 
-	public void update(Stato model) {
-
+	public void update(Stato model) throws RequiredFieldError, MaxLengthError {
+		validateUpdate(model);
 		SqlMapFactory.instance().openSession();
 
 		mapper = SqlMapFactory.instance().getMapper(StatoMapper.class);
@@ -70,6 +92,18 @@ public class StatoCRUD {
 		SqlMapFactory.instance().closeSession();
 
 		return list;
+
+	}
+
+	public Stato findForInsert(Stato model) {
+		SqlMapFactory.instance().openSession();
+
+		mapper = SqlMapFactory.instance().getMapper(StatoMapper.class);
+		ret = mapper.findForInsert(model);
+
+		SqlMapFactory.instance().closeSession();
+
+		return ret;
 
 	}
 

@@ -2,7 +2,7 @@ package it.condominio.model;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.util.Date;
+
 
 public class Preventivo {
 	private int id;

@@ -28,6 +28,10 @@
 	<select id="findAll" resultType="it.condominio.model.Stato">select * from stato </select>
  
 
+<select parameterType="Stato" id="findForInsert"
+		resultType="Stato">
+		select * from stato where nome = #{nome} ;
+	</select>
 
 
 

@@ -2,7 +2,7 @@ package it.condominio.mapper;
 
 import java.util.List;
 
-import it.condominio.model.Ruolo;
+
 import it.condominio.model.Utente;
 
 

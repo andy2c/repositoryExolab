@@ -1,7 +1,6 @@
 package it.condominio.mapper;
 
 import java.util.List;
-
 import it.condominio.model.Ruolo;
 
 public interface RuoloMapper {
@@ -14,4 +13,6 @@ public interface RuoloMapper {
 	public Ruolo find(int id);
 
 	public List<Ruolo> findAll();
+	
+	public Ruolo findForInsert(Ruolo ruolo); // fatto
 }

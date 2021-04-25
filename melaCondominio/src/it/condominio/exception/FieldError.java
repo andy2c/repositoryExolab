@@ -15,6 +15,10 @@ public class FieldError extends Exception {
 			RequiredFieldError rq = (RequiredFieldError) ex;
 			return "Il campo " + rq.getField()+ " è richiesto ";
 		}
+		if(ex instanceof MinLengthError) {
+			MinLengthError rq = (MinLengthError) ex;
+			return "Il campo "+rq.getField()+" deve essere minimo di "+rq.getMinLength()+" catatteri";
+		}
 		if(ex instanceof MaxLengthError) {
 			MaxLengthError rq = (MaxLengthError) ex;
 			return "Il campo " + rq.getField()+ " deve essere al massimo di "+ rq.getMaxLength()+ " caratteri";
@@ -26,6 +30,14 @@ public class FieldError extends Exception {
 		if(ex instanceof FormatError) {
 			FormatError rq = (FormatError) ex;
 			return "Il campo " + rq.getField()+ " non è nel formato previsto";
+		}
+		if(ex instanceof InvalidEmail) {
+			InvalidEmail rq = (InvalidEmail) ex;
+			return "Il campo "+rq.getField()+" non soddisfa uno dei seguenti requisiti: finire con .it/.com , non avere spazi vuoti e possedere soltanto una @";	
+		}
+		if(ex instanceof InvalidPassword) {
+			InvalidPassword rq = (InvalidPassword) ex;
+			return "Il campo "+rq.getField()+" non soddisfa uno dei seguenti requisiti: non avere spazi vuoti , contenere almeno due valori alfanumerici";
 		}
 		
 		return "";
