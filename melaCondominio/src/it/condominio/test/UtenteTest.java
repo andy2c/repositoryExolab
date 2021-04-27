@@ -4,6 +4,10 @@ import java.util.List;
 
 import it.condominio.crud.UtenteCRUD;
 import it.condominio.exception.EntityNotFoundError;
+import it.condominio.exception.MaxLengthError;
+import it.condominio.exception.MinLengthError;
+import it.condominio.exception.RequiredFieldError;
+import it.condominio.exception.UniqueFieldError;
 import it.condominio.model.Utente;
 import it.condominio.util.BaseUtil;
 
@@ -62,6 +66,42 @@ public class UtenteTest extends BaseUtil {
 //		
 //		
 //		System.out.println(utente.toString());
+		
+//		try {
+//			model = crud.findByEmailAndPassword(model);
+//			System.out.println(model.toString());
+//		} catch (EntityNotFoundError e) {
+//			System.out.println("non trovato");
+//		}
+		Utente cappero = new Utente("francesco", "protano", "fprotano@aaa", "temp");
+		
+		
+		try {
+			crud.insert(cappero);
+			System.out.println("inserito correttamente");
+		} catch (RequiredFieldError e) {
+			System.out.println(e.getDescription(e));
+		} catch (MaxLengthError e) {
+			System.out.println(e.getDescription(e));
+		} catch (MinLengthError e) {
+			System.out.println(e.getDescription(e));
+		} catch (UniqueFieldError e) {
+			System.out.println(e.getDescription(e));
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 }

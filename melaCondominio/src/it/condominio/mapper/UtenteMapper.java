@@ -25,4 +25,6 @@ public interface UtenteMapper {
 	
 	public List<Utente> findProprietarioAttivo();      // fatto
 	
+	public Utente findForInsert(Utente utente); // fatto bene
+	
 }

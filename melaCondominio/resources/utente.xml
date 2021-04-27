@@ -83,9 +83,9 @@ WHERE r.nome="proprietario appartamento" AND s.nome="attivo"
    </select>
 
 
-
-
-
-
-
+   
+<select parameterType="Utente" id="findForInsert"
+		resultType="Utente">
+		select * from utente WHERE email = #{email} and password = #{password} ;
+	</select>
 </mapper>

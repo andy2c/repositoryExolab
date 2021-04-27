@@ -37,12 +37,9 @@ public class UtenteCRUD extends BaseUtil {
     
    private void validateInsert(Utente model) throws RequiredFieldError, MaxLengthError, MinLengthError, UniqueFieldError {
 	   validateInsertOrUpdate(model);
-	   try {
-		   findByEmailAndPassword(model);
-		      throw new UniqueFieldError("email");
-	   }catch(EntityNotFoundError e) {
-		   
-	   }
+	   ret = findForInsert(model);
+	  if(ret != null)
+		  throw new UniqueFieldError("email"); // o email già esistente
    }
 	public void insert(Utente model) throws RequiredFieldError, MaxLengthError, MinLengthError, UniqueFieldError {
 		validateInsert(model);
@@ -154,6 +151,18 @@ public class UtenteCRUD extends BaseUtil {
 		SqlMapFactory.instance().closeSession();
 
 		return list;
+
+	}
+	public Utente findForInsert(Utente model) {
+		SqlMapFactory.instance().openSession();
+
+		mapper = SqlMapFactory.instance().getMapper(UtenteMapper.class);
+		ret = mapper.findByEmailAndPassword(model);
+
+		SqlMapFactory.instance().closeSession();
+		
+
+		return ret;
 
 	}
 
