@@ -107,19 +107,21 @@ public class AppartamentoCRUD {
 		return ret;
 
 	}
-	/*
-	public Appartamento findByInternoAndPalazzina(String palazzina, String interno)  {
+	
+	public Appartamento findByInternoAndPalazzina(Appartamento model) throws EntityNotFoundError  {
 		SqlMapFactory.instance().openSession();
 
 		mapper = SqlMapFactory.instance().getMapper(AppartamentoMapper.class);
-		ret = mapper.findByInternoAndPalazzina(palazzina, interno);
+		ret = mapper.findByInternoAndPalazzina(model);
 
 		SqlMapFactory.instance().closeSession();
-
+		if (ret == null) {
+			throw new EntityNotFoundError();
+		}
 		
 		return ret;
 
 	}
-	 */
+	
 	
 }

@@ -73,7 +73,7 @@ public class UtenteTest extends BaseUtil {
 //		} catch (EntityNotFoundError e) {
 //			System.out.println("non trovato");
 //		}
-		Utente cappero = new Utente("francesco", "protano", "fprotano@aaa", "temp");
+		Utente cappero = new Utente("francesco", "protano", "fprotano@", "temp");
 		
 		
 		try {
