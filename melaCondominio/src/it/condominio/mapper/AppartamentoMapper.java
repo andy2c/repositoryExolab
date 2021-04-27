@@ -17,5 +17,8 @@ public interface AppartamentoMapper {
 	public List<Appartamento> findAll();  // fatta con mappa
 	
 	public Appartamento findForInsert(Appartamento appartamento); // fatto bene
+	
+	//public Appartamento findByInternoAndPalazzina(String pal, String in);
+	
 }
    

@@ -40,6 +40,24 @@ public class ServletMain extends HttpServlet {
 		String action = request.getParameter("action");
 		String err=null;
 		
+		switch (action) {
+		
+		case "addProprietario" : {
+			
+			ControllerCondominio cc = new ControllerCondominio(request, response, action);
+			
+			cc.getPalazzine();
+			
+			
+		}
+			break;
+			
+		default :
+			
+			
+			
+		}
+		
 
 		
 	}
@@ -64,6 +82,15 @@ public class ServletMain extends HttpServlet {
 			ControllerUtente uc = new ControllerUtente(request, response);
 			
 			uc.login();
+			
+			
+		}
+			break;
+			
+		case "addProprietario" : {
+			
+			ControllerUtente cu = new ControllerUtente(request, response, action);
+			
 			
 			
 		}

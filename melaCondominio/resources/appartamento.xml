@@ -59,13 +59,40 @@
 		SELECT * FROM appartamento a 
         WHERE a.interno = #{interno} and a.id_palazzina= #{id_palazzina};
 	</select>
+	
+
+<!-- 
+
+ <resultMap id="resultFindByInternoAndPalazzina" type="it.condominio.model.Appartamento">
+       <result property="id" column="id" />
+       <result property="interno" column="interno" />
+       <result property="id_palazzina"  column="id_palazzina" />
+       
+       
+    <association property="palazzina" javaType="it.condominio.model.Palazzina"
+      column="id_palazzina"  >
+        <id property="id" column="idP" />
+        <result property="nome" column="nome" />
+        <result property="via" column="via" />
+        <result property="citta" column="citta" />
+        <result property="regione" column="regione" />
+       
+    
+    </association> 
+
+  </resultMap>
 
 
 
+<select parameterType="String" id="findByInternoAndPalazzina"
+		resultMap="resultFindByInternoAndPalazzina" >
+		select a*, p.id as idP , p.nome,p.via,p.citta,p.regione   
+		from appartamento a, palazzina p
+		where a.id_palazzina=p.id and p.nome= #{pal}	and a.nome= #{in};
+</select>
 
 
-
-
+ -->
 
 
 

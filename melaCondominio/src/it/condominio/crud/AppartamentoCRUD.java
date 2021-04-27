@@ -107,4 +107,19 @@ public class AppartamentoCRUD {
 		return ret;
 
 	}
+	/*
+	public Appartamento findByInternoAndPalazzina(String palazzina, String interno)  {
+		SqlMapFactory.instance().openSession();
+
+		mapper = SqlMapFactory.instance().getMapper(AppartamentoMapper.class);
+		ret = mapper.findByInternoAndPalazzina(palazzina, interno);
+
+		SqlMapFactory.instance().closeSession();
+
+		
+		return ret;
+
+	}
+	 */
+	
 }

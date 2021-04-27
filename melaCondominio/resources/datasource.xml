@@ -29,11 +29,14 @@
 	      <transactionManager type = "JDBC"/>         
 	      <dataSource type = "POOLED">
 	         <property name = "driver" value = "com.mysql.jdbc.Driver"/>
+	         <!--
 	         <property name = "url" value = "jdbc:mysql://localhost:3306/exolabmela_progettocondominio?allowPublicKeyRetrieval=true&amp;useSSL=false"/>
-	         <!-- my batis nella istruzione di sopra non supporta &  , bisogna mettere &amp;   -->
-	         <!-- ?allowPublicKeyRetrieval=true&amp;useSSL=false   -->
-	         <property name = "username" value = "root"/>
-	         <property name = "password" value = "root"/>
+	         my batis nella istruzione di sopra non supporta &  , bisogna mettere &amp; 
+	          ?allowPublicKeyRetrieval=true&amp;useSSL=false   
+	          -->
+	         <property name = "url" value = "jdbc:mysql://localhost/exolabmelacondominio"/>
+	         <property name = "username" value = "Prova"/>
+	         <property name = "password" value = "passT-"/>
 	      </dataSource>            
 	   </environment>
 	</environments>
