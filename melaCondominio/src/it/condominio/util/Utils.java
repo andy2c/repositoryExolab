@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import it.condominio.model.Ruolo;
+import it.condominio.model.Utente;
 
 public class Utils {
 
@@ -22,8 +24,7 @@ public class Utils {
 
 		return null;
 	}
-	
-	
+
 	public static Integer getIntOrNull(String numberAsString) {
 		try {
 			Integer ret = Integer.valueOf(numberAsString);
@@ -63,12 +64,12 @@ public class Utils {
 		try {
 			Double ret = Double.valueOf(doubleAsString);
 			return ret;
-		}
-		catch(Exception e) {
-			
+		} catch (Exception e) {
+
 		}
 		return null;
 	}
+
 	public static boolean isNullOrEmpty(String value) {
 		return value == null || value.equals("");
 	}
@@ -84,9 +85,11 @@ public class Utils {
 	public static boolean isNullOrEmpty(Object value) {
 		return value == null;
 	}
-    public static boolean isNullOrEmpty(Double value) {
-    	return value == null;
-    }
+
+	public static boolean isNullOrEmpty(Double value) {
+		return value == null;
+	}
+
 	public static String createOrGetCookie(HttpServletRequest request, HttpServletResponse response) {
 		if (request.getSession().getAttribute("session_id") != null)
 			return (String) request.getSession().getAttribute("session_id");
@@ -109,39 +112,50 @@ public class Utils {
 
 		return value;
 	}
-	
+
 	public static boolean validatePassword(String password) {
 		int conta_numeri = 0;
-		for(int i=0; i<password.length();i++) {	
+		for (int i = 0; i < password.length(); i++) {
 			if (Character.isDigit(password.charAt(i)))
-				conta_numeri ++;
+				conta_numeri++;
 		}
-		if(conta_numeri < 2 ) {
+		if (conta_numeri < 2) {
 			return true;
-		}	
-		if(password.contains(" "))
+		}
+		if (password.contains(" "))
 			return true;
-		
-		
-		
+
 		return false;
 	}
-	
+
 	public static boolean validateEmail(String email) {
-		if(!(email.endsWith(".com") || email.endsWith(".it"))){
+		if (!(email.endsWith(".com") || email.endsWith(".it"))) {
 			return true;
 		}
-		int contaChiocciola =0;
-		for(int i=0; i < email.length() ;i++) {				
-			if(email.charAt(i)=='@') {
+		int contaChiocciola = 0;
+		for (int i = 0; i < email.length(); i++) {
+			if (email.charAt(i) == '@') {
 				contaChiocciola++;
-				if(contaChiocciola >= 1)
+				if (contaChiocciola >= 1)
 					return true;
 			}
-				
+
 		}
-		if(email.contains(" "))
+		if (email.contains(" "))
 			return true;
 		return false;
 	}
+
+	public static boolean findValueIntoList(Object object, String value) {
+		boolean ret = false;
+		if (object instanceof Utente) {
+			Utente utente = (Utente) object;
+			for (Ruolo r : utente.getRuoli()) {
+				if (r.getNome().equals(value))
+					return true;
+			}
+		}
+		return ret;
+	}
+
 }
